@@ -1,10 +1,10 @@
 ---
 layout: home
-title: Home
+title: Executive Coaching
 landing-title: '<div class="name">
   Hi, my name is <span class="gagan">Gagan<span class="pronunciation">Gah-gun</span></span>
 </div>'
-description: what what what
+description: 
 image: null
 author: null
 show_tile: false

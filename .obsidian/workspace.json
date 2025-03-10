@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/2025-03-03-Building a career worth waking up to.md",
+                "file": "index.md",
                 "mode": "source",
                 "source": true,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "2025-03-03-Building a career worth waking up to"
+              "title": "index"
             }
           },
           {
@@ -190,9 +190,9 @@
   },
   "active": "b238d1a4b853ae88",
   "lastOpenFiles": [
+    "_posts/2025-03-03-Building a career worth waking up to.md",
     "_posts/2025-02-09-Exec training.md",
     "_posts/2025-02-03-FirstMonthAtNewJob.md",
-    "_posts/2025-03-03-Building a career worth waking up to.md",
     "Coaching-staging/_config.yml",
     "Coaching-staging",
     "Coaching-staging/landing.md",
