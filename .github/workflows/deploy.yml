@@ -45,3 +45,4 @@ jobs:
           publish_dir: ./_site
           user_name: diesh
           user_email: gagan@designstamp.com
+          force_orphan: true   # ✅ ensure a fresh commit every deploy
