@@ -6,7 +6,7 @@ on:
       - master
 
 permissions:
-  contents: write  # Required to allow the workflow to push to gh-pages
+  contents: write
 
 jobs:
   build:
@@ -15,14 +15,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-
-      # Cache gems
-      - uses: actions/cache@v3
-        with:
-          path: vendor/bundle
-          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-gems-
 
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
@@ -36,17 +28,12 @@ jobs:
       - name: Build the site
         run: bundle exec jekyll build
 
-      # 🔎 Debug: show what Jekyll actually built
-      - name: Show build output
-        run: ls -R ./_site
-
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          personal_token: ${{ secrets.PAGES_DEPLOY_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
           publish_dir: ./_site
-          user_name: diesh
-          user_email: gagan@designstamp.com
-          force_orphan: true     # ✅ always create a new commit
-          keep_files: false      # ✅ remove old files so nothing stale remains
+          force_orphan: false   # ✅ keep history so CDN sees file changes
+          commit_message: "Deploy site at $(date +'%Y-%m-%d %H:%M:%S')"
+          enable_jekyll: false  # ✅ ensure assets aren’t ignored
