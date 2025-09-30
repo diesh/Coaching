@@ -11,7 +11,7 @@ blog_tagline: "Spicy musings about UX, design, tech, and the world we live in."
 # baseurl: ""               # keep empty if site is served from root
 
 url: "https://diesh.github.io"
-baseurl: "/Coaching-staging"
+baseurl: "/Coaching"
 
 
 
