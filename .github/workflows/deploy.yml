@@ -6,7 +6,7 @@ on:
       - master
 
 permissions:
-  contents: write  # Required to allow the workflow to push to gh-pages
+  contents: write
 
 jobs:
   build:
@@ -16,7 +16,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # Cache gems
       - uses: actions/cache@v3
         with:
           path: vendor/bundle
@@ -36,9 +35,9 @@ jobs:
       - name: Build the site
         run: bundle exec jekyll build
 
-      # 🔑 Add a unique build-info file so CDN always sees a change
-      - name: Add build timestamp
-        run: echo "Built at $(date)" > ./_site/build-info.txt
+      # 🔎 Debug: show what Jekyll actually built
+      - name: Show build output
+        run: ls -R ./_site
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
@@ -49,4 +48,4 @@ jobs:
           publish_dir: ./_site
           user_name: diesh
           user_email: gagan@designstamp.com
-          force_orphan: true   # ✅ ensure a fresh commit every deploy
+          force_orphan: true
