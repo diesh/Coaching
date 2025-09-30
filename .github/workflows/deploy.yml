@@ -6,7 +6,7 @@ on:
       - master
 
 permissions:
-  contents: write
+  contents: write  # Required to allow the workflow to push to gh-pages
 
 jobs:
   build:
@@ -16,6 +16,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      # Cache gems
       - uses: actions/cache@v3
         with:
           path: vendor/bundle
@@ -43,9 +44,9 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           personal_token: ${{ secrets.PAGES_DEPLOY_TOKEN }}
-          external_repository: diesh/Coaching
           publish_branch: gh-pages
           publish_dir: ./_site
           user_name: diesh
           user_email: gagan@designstamp.com
-          force_orphan: true
+          force_orphan: true     # ✅ always create a new commit
+          keep_files: false      # ✅ remove old files so nothing stale remains
