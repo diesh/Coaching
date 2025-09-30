@@ -10,7 +10,7 @@ blog_tagline: "Spicy musings about UX, design, tech, and the world we live in."
 # url: "https://diesh.ca"   # canonical site URL
 # baseurl: ""               # keep empty if site is served from root
 
-url: "https://diesh.github.io"
+url: "https://diesh.ca"
 baseurl: ""
 
 
