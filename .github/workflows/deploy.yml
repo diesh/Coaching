@@ -36,6 +36,10 @@ jobs:
       - name: Build the site
         run: bundle exec jekyll build
 
+      # 🔑 Add a unique build-info file so CDN always sees a change
+      - name: Add build timestamp
+        run: echo "Built at $(date)" > ./_site/build-info.txt
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
