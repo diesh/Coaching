@@ -1,0 +1,37 @@
+name: Build and Deploy Jekyll site
+
+on:
+  push:
+    branches:
+      - master   # or main, depending on your live branch
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.1'
+          bundler-cache: true
+
+      - name: Install dependencies
+        run: bundle install
+
+      - name: Build the site
+        run: bundle exec jekyll build
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          personal_token: ${{ secrets.PAGES_DEPLOY_TOKEN }}
+          external_repository: diesh/Coaching
+          publish_branch: gh-pages
+          publish_dir: ./_site
+          user_name: diesh
+          user_email: gagan@designstamp.com
