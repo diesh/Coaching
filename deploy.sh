@@ -6,21 +6,12 @@ cd "$(dirname "$0")"
 echo "🔧 Cleaning old build..."
 bundle exec jekyll clean
 
-# Make sure _site exists with git history from gh-pages
-if [ ! -d "_site/.git" ]; then
-  echo "🌐 Setting up _site git history..."
-  rm -rf _site
-  git clone --branch gh-pages https://github.com/diesh/Coaching.git _site
-else
-  echo "🔄 Updating existing _site git history..."
-  cd _site
-  git fetch origin gh-pages
-  git reset --hard origin/gh-pages
-  cd ..
-fi
+echo "🌐 Setting up _site git history..."
+rm -rf _site || true
+git clone --branch gh-pages --depth=1 https://github.com/diesh/Coaching.git _site
 
-echo "⚙️ Building site..."
-bundle exec jekyll build --config _config.yml
+echo "⚙️ Building site (suppressing Sass deprecation warnings)..."
+bundle exec jekyll build --config _config.yml 2> >(grep -v "Deprecation Warning" >&2)
 
 cd _site
 
@@ -31,9 +22,12 @@ if [ ! -s "index.html" ]; then
 fi
 
 git add -A
+
 if git diff --cached --quiet; then
   echo "✅ No changes to deploy."
 else
+  echo "📝 Files changed in this deploy:"
+  git diff --cached --name-status
   git commit -m "Deploy $(date)"
   echo "🚀 Pushing changes..."
   git push origin gh-pages
