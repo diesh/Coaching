@@ -1,33 +1,43 @@
 #!/bin/bash
-set -e
+set -euo pipefail
 
-echo "🔧 Cleaning and building site..."
+cd "$(dirname "$0")"
+
+echo "🔧 Cleaning old build..."
 bundle exec jekyll clean
-bundle exec jekyll build --config _config.yml
 
-# Safety check: make sure _site/index.html exists and isn't empty
-if [ ! -s "_site/index.html" ]; then
-  echo "❌ ERROR: _site/index.html missing or empty. Build failed. Aborting deploy."
-  exit 1
+# Make sure _site exists with git history from gh-pages
+if [ ! -d "_site/.git" ]; then
+  echo "🌐 Setting up _site git history..."
+  rm -rf _site
+  git clone --branch gh-pages https://github.com/diesh/Coaching.git _site
+else
+  echo "🔄 Updating existing _site git history..."
+  cd _site
+  git fetch origin gh-pages
+  git reset --hard origin/gh-pages
+  cd ..
 fi
+
+echo "⚙️ Building site..."
+bundle exec jekyll build --config _config.yml
 
 cd _site
 
-echo "🌐 Preparing gh-pages branch..."
-git init
-git remote add origin https://github.com/diesh/Coaching.git || true
-git checkout -B gh-pages
-
-echo "📝 Verifying CNAME..."
-if [ ! -s "CNAME" ]; then
-  echo "❌ ERROR: CNAME file missing from _site. Did you add 'include: - CNAME' to _config.yml?"
+# Safety: confirm homepage exists
+if [ ! -s "index.html" ]; then
+  echo "❌ ERROR: index.html missing after build. Aborting."
   exit 1
 fi
 
-echo "🚀 Deploying to GitHub Pages..."
-git add .
-git commit -m "Deploy $(date)"
-git push -f origin gh-pages
+git add -A
+if git diff --cached --quiet; then
+  echo "✅ No changes to deploy."
+else
+  git commit -m "Deploy $(date)"
+  echo "🚀 Pushing changes..."
+  git push origin gh-pages
+fi
 
 cd ..
 echo "✅ Deploy complete. Live at https://diesh.ca"
