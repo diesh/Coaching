@@ -1,0 +1,249 @@
+/* ========================================================================
+   PRINT RESET
+   ======================================================================== */
+* {
+  background: none !important;
+  color: #000 !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+}
+
+@page {
+  margin: 1in; /* keep clean margins */
+}
+
+body::before {
+  content: "";
+  display: block;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Footer message */
+@media print {
+  body::after {
+    content: "Message me: gagan [at] designstamp [dot] com";
+    display: block;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    font-size: 10pt;
+    text-align: center;
+    border-top: 1px solid #ccc;
+    background: white;
+    color: #000;
+  }
+}
+
+/* ========================================================================
+   HIDE UNNECESSARY UI
+   ======================================================================== */
+@media print {
+  header,
+  footer,
+  nav,
+  #header,
+  .brandimage_masthead,
+  .testimonials-wrapper,
+  button,
+  button.expand-toggle,
+  .right-col,
+  .scroll-indicator,
+  #contact {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+  }
+}
+
+/* ========================================================================
+   LAYOUT RESET
+   ======================================================================== */
+main,
+section#one,
+.inner,
+.left-col {
+  width: 100% !important;
+  float: none !important;
+  margin: 0 auto;
+  padding: 0 !important;
+}
+
+/* ========================================================================
+   EXPAND ALL ACCORDIONS
+   ======================================================================== */
+.faq-answer,
+.faq-item .faq-answer,
+.timeline-card .faq-answer,
+.content-card .faq-answer {
+  max-height: none !important;
+  overflow: visible !important;
+  padding-top: 0.5rem !important;
+  display: block !important;
+  opacity: 1 !important;
+}
+
+/* Hide + icons */
+.faq-icon,
+.faq-question::after {
+  display: none !important;
+}
+
+/* Cards + timeline boxes */
+.timeline-card,
+.content-card,
+.faq-item,
+.box {
+  page-break-inside: avoid;
+  break-inside: avoid;
+  border: 1px solid #ccc !important;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  overflow: visible !important;
+}
+
+/* Headings */
+h1, h2, h3 {
+  page-break-after: avoid;
+  orphans: 3;
+  widows: 3;
+  color: #000 !important;
+}
+
+/* Paragraphs + lists */
+p, li {
+  font-size: 12pt;
+  line-height: 1.5;
+  color: #000 !important;
+}
+
+/* Links */
+a {
+  color: #000 !important;
+  text-decoration: none;
+}
+
+/* ========================================================================
+   TILES SECTION
+   ======================================================================== */
+@media print {
+  .tiles,
+  .tiles--grid {
+    display: block !important;
+    width: 100% !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+    gap: 0 !important;
+  }
+
+  .tiles article {
+    display: block !important;
+    page-break-inside: avoid;
+    break-inside: avoid;
+    margin: 0 0 1.5rem 0 !important;
+    padding: 0 0 1rem 0 !important;
+    width: 100% !important;
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    transform: none !important;
+  }
+
+  .tiles .tile-image,
+  .tiles .tile-image img,
+  .tiles article a.link.primary {
+    display: none !important;
+  }
+
+  .tiles .tile-inner,
+  .tiles header.major {
+    display: block !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .tiles header.major h3 {
+    font-size: 18pt !important;
+    margin-bottom: 0.25rem !important;
+    color: #000 !important;
+  }
+
+  .tiles header.major p {
+    font-size: 12pt !important;
+    line-height: 1.5 !important;
+    margin-bottom: 1rem !important;
+    color: #000 !important;
+  }
+}
+
+
+@media print {
+  .faq-item,
+  .content-card,
+  .timeline-card,
+  .faq-item,
+  .expandable-card 
+  {
+    border:none;
+  }
+
+  /* If card is too tall, push it entirely to next page */
+  .faq-item,
+  .content-card,
+  .timeline-card {
+    display: block;
+    width: 100%;
+  }
+}
+
+@media print {
+  .tiles,
+  .tiles--grid {
+    display: block !important;
+    width: 100% !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+    gap: 0 !important;
+  }
+
+  .tiles article {
+    display: block !important;
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+    border: 1px solid #ccc !important;
+    padding: 1rem !important;
+    margin: 0 0 1.5rem 0 !important;
+    background: none !important;
+    box-shadow: none !important;
+    transform: none !important;
+    position: relative !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    color: #000 !important;
+  }
+
+  .tiles article *,
+  .tiles article header,
+  .tiles article h3,
+  .tiles article p {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: static !important;
+    color: #000 !important;
+  }
+
+  .tile-image,
+  .tile-image img,
+  .tiles article .link.primary,
+  .tiles article::before,
+  .tiles article::after {
+    display: none !important;
+  }
+}
