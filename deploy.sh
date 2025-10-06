@@ -5,7 +5,6 @@ if command -v rbenv >/dev/null 2>&1; then
   eval "$(rbenv init - bash)"
 fi
 
-
 set -e
 
 # Ensure VS Code can find your user Ruby gems (fixes Bundler 2.6.8 error)
@@ -30,17 +29,34 @@ echo "🔄 Syncing with remote gh-pages..."
 git fetch origin gh-pages || true
 git reset --soft origin/gh-pages || true
 
-# Add & commit only changes
+# Stage all updates
 git add -A
+
 if git diff --cached --quiet; then
   echo "✅ No changes to deploy."
 else
-  echo "📄 Changed files:"
-  git diff --cached --name-only
+  echo ""
+  echo "✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨"
+  echo "📄 Files changed since last deploy:"
+  echo "----------------------------------"
+  git diff --cached --name-status | sed \
+    -e 's/^M/🟡 Modified:/g' \
+    -e 's/^A/🟢 Added:/g' \
+    -e 's/^D/🔴 Deleted:/g'
+  echo "----------------------------------"
+  echo "✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨"
+  echo ""
+
   git commit -m "Deploy $(date)"
   echo "🚀 Pushing changes..."
   git push origin gh-pages --force
+
+  echo ""
+  echo "✅ Deployment Summary:"
+  echo "----------------------------------"
+  git show --stat HEAD
+  echo "----------------------------------"
 fi
 
 cd ..
-echo "✅ Deploy complete. Live at https://diesh.ca"
+echo "🌍 Deploy complete. Live at https://diesh.ca"
