@@ -1,38 +1,47 @@
 #!/bin/bash
-set -euo pipefail
 
-cd "$(dirname "$0")"
+# --- Force VS Code tasks to use rbenv Ruby ---
+if [ -d "$HOME/.rbenv" ]; then
+  export PATH="$HOME/.rbenv/bin:$HOME/.rbenv/shims:$PATH"
+  eval "$(~/.rbenv/bin/rbenv init - bash)"
+fi
+
+
+set -e
+
+# Ensure VS Code can find your user Ruby gems (fixes Bundler 2.6.8 error)
+export PATH="$HOME/.gem/ruby/$(ruby -e 'print RUBY_VERSION')/bin:$PATH"
 
 echo "🔧 Cleaning old build..."
 bundle exec jekyll clean
+bundle exec jekyll build --config _config.yml --quiet
 
 echo "🌐 Setting up _site git history..."
-rm -rf _site || true
-git clone --branch gh-pages --depth=1 https://github.com/diesh/Coaching.git _site
-
-echo "⚙️ Building site (suppressing Sass deprecation warnings)..."
-bundle exec jekyll build --config _config.yml 2> >(grep -v "Deprecation Warning" >&2)
-
 cd _site
 
-# Safety: confirm homepage exists
-if [ ! -s "index.html" ]; then
-  echo "❌ ERROR: index.html missing after build. Aborting."
-  exit 1
+if [ ! -d ".git" ]; then
+  git init
+  git remote add origin https://github.com/diesh/Coaching.git
+  git checkout -b gh-pages
+else
+  git checkout gh-pages || git checkout -b gh-pages
 fi
 
-git add -A
+echo "🔄 Syncing with remote gh-pages..."
+git fetch origin gh-pages || true
+git reset --soft origin/gh-pages || true
 
+# Add & commit only changes
+git add -A
 if git diff --cached --quiet; then
   echo "✅ No changes to deploy."
 else
-  echo "📝 Files changed in this deploy:"
-  git diff --cached --name-status
+  echo "📄 Changed files:"
+  git diff --cached --name-only
   git commit -m "Deploy $(date)"
   echo "🚀 Pushing changes..."
-  git push origin gh-pages
+  git push origin gh-pages --force
 fi
 
 cd ..
 echo "✅ Deploy complete. Live at https://diesh.ca"
-
