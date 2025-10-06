@@ -305,7 +305,7 @@ function fadeAndLoad(container, testimonials) {
 }
 
 function initTestimonials() {
-  const containers = document.querySelectorAll("#testimonial-box");
+  const containers = document.querySelectorAll("#testimonial-box, #testimonial-box-coaching");
   if (!containers.length) return;
 
   fetch(getTestimonialsPath())
@@ -316,6 +316,7 @@ function initTestimonials() {
       containers.forEach((c) => fadeAndLoad(c, testimonials));
     });
 }
+
 
 window.addEventListener("load", () => {
   setTimeout(initTestimonials, 50);
