@@ -182,7 +182,9 @@
       <!-- end testimonial block -->
 
       <!-- dynamic sidebar that only appears on mobile -->
+
       {% include coaching-sidebar.html subnav_class="subnav-mobile" %}
+      
       <!-- end dynamic sidebar that only appears on mobile -->
 
     </div> 
