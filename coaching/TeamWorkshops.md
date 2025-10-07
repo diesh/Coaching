@@ -179,11 +179,11 @@
         </div>
         <!-- end testimonial block -->
 
-<!-- dynamic sidebar that only appears on mobile -->
+      <!-- dynamic sidebar that only appears on mobile -->
 
-{% include coaching-sidebar.html subnav_class="subnav-mobile" %}
+      {% include coaching-sidebar.html subnav_class="subnav-mobile" %}
 
-<!-- end of dynamic sidebar that only appears on mobile -->
+      <!-- end of dynamic sidebar that only appears on mobile -->
 
       </div>
       <!-- end .right-col -->
