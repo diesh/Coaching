@@ -101,69 +101,121 @@ $header-h: 72px !default;
 /* ==========================================================================
    Good Question landing – smaller type, same fade order
    ========================================================================== */
-/* ==========================================================================
-   Good Question landing – same fade sequence as home
-   ========================================================================== */
 #banner.goodquestion-landing {
-  min-height: 480px;
+  position: relative;
+  overflow: hidden;
   height: auto;
-  padding-bottom: 2.5rem;
+  min-height: 480px;
+  padding: 5rem 1.5rem 2rem;
   margin-bottom: 2.5rem;
+  text-align: left; /* force left alignment */
 
   &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
     background-image: url("../images/goodquestion-cover.jpg");
     background-size: cover;
     background-position: center top;
+    z-index: 0;
   }
 
-  & .hero-display {
-  font-family: 'Playfair Display', serif;
-  display: flex;
-  gap: 0.3em;        
-  align-items: center;  
-  font-weight: 800;
-  line-height: 1.2;
-  color: #fff;
-  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.25);
-  margin-bottom: 0.75rem;
-  white-space: normal;
-  
-  
-  @include breakpoint(medium)  { font-size: 2rem; }
-  @include breakpoint(large)   { font-size: 3rem; }
-  @include breakpoint(xlarge)  { font-size: 3.5rem;   }
-  @include breakpoint(xxlarge) { font-size: 3rem; }
-}
- & .hero-icon {
-  flex-shrink: 0;           /* Prevent icon from shrinking */
-}
+  /* Make sure content starts at top, not centered */
+  .inner {
+    position: relative;
+    z-index: 1;
+    display: block;
+    transform: none;
+    top: auto;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding-top: 0; /* ensure no double spacing */
+  }
 
-.hero-tagline {
-  font: 300 1.5rem/1.4 'Inter', sans-serif;
-  color: #fff;
-  margin-bottom: 1.5rem;
-  white-space: normal;
-  max-width: 33ch;
-  @include breakpoint(large)   { font-size: 1.6rem; }
-  @include breakpoint(xlarge)  { font-size: 1.75rem; }
-}
+  .hero-display {
+    font-family: 'Playfair Display', serif;
+    display: flex;
+    gap: 0.3em;
+    align-items: baseline; /* keeps inline flow */
+    font-weight: 800;
+    line-height: 1.2;
+    color: #fff;
+    text-shadow: 0 2px 14px rgba(0, 0, 0, 0.25);
+    margin-bottom: 0.75rem;
+    white-space: normal;
+    text-align: left;
 
+    @include breakpoint(medium)  { font-size: 2rem; }
+    @include breakpoint(large)   { font-size: 3rem; }
+    @include breakpoint(xlarge)  { font-size: 3.5rem; }
+    @include breakpoint(xxlarge) { font-size: 3rem; }
+  }
+
+  .hero-icon {
+    flex-shrink: 0;
+    line-height: 1;
+    margin-top: 0; /* prevent cropping */
+  }
+
+  .hero-tagline {
+    font: 300 1.4rem/1.4 'Inter', sans-serif;
+    color: #fff;
+    margin-bottom: 1.5rem;
+    white-space: normal;
+    max-width: 33ch;
+    text-align: left;
+
+    @include breakpoint(large)  { font-size: 1.6rem; }
+    @include breakpoint(xlarge) { font-size: 1.75rem; }
+  }
+
+  /* --- Mobile adjustments --- */
+  @include breakpoint(small) {
+    min-height: 320px;
+    padding: 4rem 1rem 1.5rem; /* more top padding to protect the “?” */
+
+    .inner {
+      padding-top: 0;
+    }
+
+    .hero-display {
+      flex-direction: row; /* stays inline */
+      flex-wrap: wrap;
+      gap: 0.2em;
+      font-size: 1.6rem;
+      line-height: 1.1;
+      text-align: left;
+    }
+
+    .hero-icon {
+      font-size: 1.2em;
+      margin-right: 0.15em;
+      margin-top: 0.1em; /* nudges down so it's fully visible */
+    }
+
+    .hero-tagline {
+      font-size: 1rem;
+      line-height: 1.4;
+      max-width: 90%;
+      margin-bottom: 1rem;
+      text-align: left;
+    }
+  }
 }
 
 /* --- Sequential fade for Good Question --- */
-/* Start hidden just like home page */
 #banner.goodquestion-landing .hero-display,
 #banner.goodquestion-landing .hero-tagline {
   opacity: 0;
   transition: opacity 0.6s ease-in-out;
 }
 
-/* Fade in using the same trigger class */
 #banner.goodquestion-landing.is-hero-loaded .hero-display {
   opacity: 1;
-  transition-delay: 0.4s;   /* heading */
+  transition-delay: 0.4s;
 }
+
 #banner.goodquestion-landing.is-hero-loaded .hero-tagline {
   opacity: 1;
-  transition-delay: 1s;     /* tagline */
+  transition-delay: 1s;
 }

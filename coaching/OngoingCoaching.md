@@ -20,7 +20,7 @@ bullets:
 boxes:
   - title: "What to Expect"
     content: |
-      Ongoing coaching is flexible and tailored to your needs. Expect regular check-ins, actionable insights, and a safe space to explore challenges and opportunities.
+      Ongoing coaching is flexible and tailored to your needs. Expect regular check-ins, actionable insights, and a safe space to explore challenges and opportunities. [Read how we’ll work together](/WorkingTogether.html).
     items:
       - "<strong>Personalized support</strong>: Coaching sessions designed around your goals and challenges."
       - "<strong>Actionable feedback</strong>: Clear, practical advice to help you move forward."
@@ -80,39 +80,47 @@ faqs:
 
 <section id="one">
   <div class="inner"><!-- section inner wrapper -->
-
+   <!-- Two Column Layout -->
+    <div class="two-col-layout"><!-- start two-column layout -->
+   <!-- Left Column -->
+      <div class="left-col"><!-- start left-col -->
     <!-- Page Header -->
     <header class="major">
       <h1>{{ page.title }}</h1>
     </header>
 
     <!-- Intro -->
+    <div class="page-intro">
     <h2 id="content">Your Partner in Growth</h2>
     <p>{{ page.description }}</p>
-
-    <!-- Two Column Layout -->
-    <div class="two-col-layout"><!-- start two-column layout -->
-
-      <!-- Left Column -->
-      <div class="left-col"><!-- start left-col -->
+    </div>
+   
         <h2 id="elements">What You’ll Gain</h2>
-        <p>Ongoing coaching is tailored to your unique needs, helping you overcome obstacles and achieve sustained success. Here’s what you can expect:</p>
+        <p>Ongoing coaching is tailored to your needs, helping you overcome obstacles and achieve sustained success. Here’s what you can expect:</p>
         <ul class="coaching-highlights">
           <li><strong>Break Through Challenges</strong><br>Work through difficult problems with an expert who helps you see blind spots, explore new perspectives, and find solutions to get unstuck.</li>
           <li><strong>Stay Accountable</strong><br>Avoid falling into familiar traps by having someone hold you accountable to your goals, commitments, and progress.</li>
           <li><strong>Combat Loneliness</strong><br>70% of professionals feel lonely at work. With ongoing coaching, you’ll have a trusted ally to rely on, who understands what you’re going through and helps you navigate it with confidence.</li>
+
+         <li><strong>Vary the Cadence</strong><br>
+        Some sessions are intense: tackling information architecture, preparing for performance reviews, or working on quarterly reports. Others are lighter: focused on communication, stakeholder dynamics, or simply creating space to reflect and regroup. This rhythm is intentional. Some weeks we solve problems. Other weeks we build systems or restore energy. All of it helps you develop new skills, practice new behaviours, and let go of what no longer serves you.</li>
+
+
           <li><strong>Track Progress and Improve Performance</strong><br>Like a gym coach for your career, we’ll create a system to track your progress, celebrate wins, and identify areas for improvement, so you can keep growing and performing at your best.</li>
         </ul>
 
-        <p>Personal growth and learning to work well with others is a continuous process of growth, adaptation, and refinement. Successful people don't react to challenges, they proactively shape their path, deepen their self-awareness, and refine their impact. Coaching can provide you the structure, insight, and accountability to help you navigate complex decisions, lead with confidence, and stay ahead in an ever-changing landscape. If you’re curious about my approach or want to explore more ways to grow, learn more <a href="{{ 'aboutGagan' | relative_url }}">about me</a> and <a href="#contact" class="next scrolly">let's connect!</a></p>
+        <p>Personal growth and learning to work well with others is a continuous process of growth, adaptation, and refinement. Successful people don't react to challenges, they proactively shape their path, deepen their self-awareness, and refine their impact. Coaching can provide you the structure, insight, and accountability to help you navigate complex decisions, lead with confidence, and stay ahead in an ever-changing landscape. </p>
+        <p>
+  Discover <a href="{{ 'WorkingTogether.html' | relative_url }}">how we’ll work together</a> or get to know 
+  <a href="{{ 'AboutGagan.html' | relative_url }}">more about me</a>.  
+  If you have questions and you’re ready to level up, 
+  <a href="#contact" class="next scrolly">let’s connect!</a>
+</p>
+
 
         <!-- Inline placement for mobile -->
 
-<!-- dynamic sidebar that only appears on mobile -->
 
-{% include coaching-sidebar.html subnav_class="subnav-mobile" %}
-
-<!-- end of dynamic sidebar that only appears on mobile -->
        
 
         <!-- FAQ Section -->
@@ -142,21 +150,21 @@ faqs:
 
 
         <!-- Coaching Boxes -->
-        {% for box in page.boxes %}
-          <div class="box">
-            <h3>{{ box.title }}</h3>
-            {% if box.content %}
-              <p>{{ box.content }}</p>
-            {% endif %}
-            {% if box.items %}
-              <ul>
-                {% for item in box.items %}
-                  <li>{{ item }}</li>
-                {% endfor %}
-              </ul>
-            {% endif %}
-          </div>
+     {% for box in page.boxes %}
+  <div class="box">
+    <h3>{{ box.title }}</h3>
+    {% if box.content %}
+      {{ box.content | markdownify }}
+    {% endif %}
+    {% if box.items %}
+      <ul>
+        {% for item in box.items %}
+          <li>{{ item | markdownify | remove: '<p>' | remove: '</p>' }}</li>
         {% endfor %}
+      </ul>
+    {% endif %}
+  </div>
+{% endfor %}
         <!-- End Coaching Boxes -->
 
           
@@ -166,6 +174,12 @@ faqs:
   <div id="testimonial-box" class="testimonials-wrapper single-column" data-count="1" data-box-wrap="true"></div>
 </section>
         <!-- End Testimonial Block -->
+
+<!-- dynamic sidebar that only appears on mobile -->
+
+{% include coaching-sidebar.html subnav_class="subnav-mobile" %}
+
+<!-- end of dynamic sidebar that only appears on mobile -->
 
       </div><!-- end right-col -->
 

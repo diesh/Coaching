@@ -1,13 +1,16 @@
 ---
 layout: post
-title: How can a leadership team get results?
-description: Want to anticipate the future? Build a future-proof company? How can you use design thinking to tackle complexity, bring innovation into your everyday work and drive meaningful change? 
+title: "How can a leadership team get results?"
+description: "Want to anticipate the future? Build a future-proof company? How can you use design thinking to tackle complexity, bring innovation into your everyday work and drive meaningful change?"
 image: assets/images/mark-fletcher-brown-nN5L5GXKFz8-unsplash.jpg
 masthead_caption: "Mark Fletcher-Brown on Unsplash"
-masthead_url: "hhttps://unsplash.com/@markfb"
+masthead_url: "https://unsplash.com/@markfb"
 date: 2025-02-07
 comments: true
 ---
+
+More than ever, exec teams must help their companies dream a better future and anticipate what's to come next. Leaders must help their team tackle complexity and be able to see the forest from the trees so we end up where we want to go!
+
 ### Design Thinking for Executives: The Secret to Smarter Decision-Making
 
 Executives are trained to solve problems with methods that focus more on efficiency rather than innovation. It's difficult to inspire a team if the leadership is bogged down with how things used to be, rather than solving for a world that doesn't even exist as yet. Enter **design thinking**, a human-centered approach that helps leaders tackle complexity, foster innovation, and drive meaningful change.

@@ -26,27 +26,57 @@ body {
 @include breakpoint(xlarge) { body { font-size: 1.08rem; } }
 @include breakpoint(xxsmall) { body { font-size: 1.15rem; } }
 
-/* Headings */
+/* Headings – Refined Hierarchy */
 h1, h2, h3, h4, h5, h6 {
   font-family: map-get($font, 'family');
-  font-weight: 700;
-  line-height: 1.2;
-  color: map-get($palette, 'fg-bold');
-  margin: 0 0 0.6em 0;
+  line-height: 1.3;
+  margin: 0 0 1em 0;
 }
 
-h1 { font-size: 2rem; }
-h2 { font-size: 1.5rem; }
-h3 { font-size: 1.25rem; }
-h4 { font-size: 1rem; }
-h5 { font-size: 0.9rem; }
-h6 { font-size: 0.7rem; color: map-get($palette, 'muted'); }
+h1 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: map-get($palette, 'fg-bold');
+}
 
+h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  color: map-get($palette, 'fg');
+}
+
+h3 {
+   font-size: 1.25rem;
+  font-weight: 500;
+  color: map-get($palette, 'fg');
+}
+
+
+h4 {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: map-get($palette, 'fg-light');
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+h5, h6 {
+  font-size: 1rem;
+  font-weight: 500;
+  color: map-get($palette, 'muted');
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* Responsive tweaks */
 @include breakpoint(small) {
   h1 { font-size: 2rem; }
-  h2 { font-size: 1.5rem; }
-  h3 { font-size: 1.25rem; }
+  h2 { font-size: 1.6rem; }
+  h3 { font-size: 1.3rem; }
 }
+
 
 /* Paragraphs and text */
 p { margin: 0 0 1.1rem 0; }
@@ -370,58 +400,91 @@ a {
   font-size: 0.95rem;
 }
 
-
 .page-intro {
-  margin-top: 100px;
+  margin-top: 0;
+
+  .no-banner & {
+    margin-top: 100px;
+  }
+
   p {
     font-style: italic;
-    color: #666;
-    font-size: 1.15rem;
-    line-height: 1.6;
-    margin-bottom: 2rem;
-    border-left: 4px solid #ddd;
-    padding-left: 1.25rem;
-
-    @media screen and (min-width: 768px) { font-size: 1.25rem; }
-    @media screen and (min-width: 1280px) { font-size: 1.35rem; line-height: 1.7; }
-  }
-}
-
-/* Blockquote */
-blockquote {
-  font-style: italic;
-  font-size: 1.2rem;
-  color: #666;
-  padding: 1.5em;
-  border-top: 2px solid var(--nav-color, #{map-get($palette, 'spicy')});
-  border-bottom: 2px solid var(--nav-color, #{map-get($palette, 'spicy')});
-  background: white;
-  max-width: 100%;
-  margin: 2em 0;
-  text-align: left;
-  clear: both;
-
-  &.left {
-    float: left;
-    width: 45%;
-    margin-right: 2rem;
-  }
-  &.right {
-    float: right;
-    width: 45%;
-    margin-left: 2rem;
+    color: #444; // slightly darker for better readability
+    font-size: 1.2rem;
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+    max-width: 72ch;
   }
 
-  @include breakpoint(small) {
-    &,
-    &.left,
-    &.right {
-      float: none;
-      width: 100%;
-      margin: 1.5rem 0;
+  @media screen and (min-width: 768px) {
+    p {
+      font-size: 1.3rem;
+    }
+  }
+
+  @media screen and (min-width: 1280px) {
+    p {
+      font-size: 1.4rem;
     }
   }
 }
+
+
+
+/* Blockquote */
+blockquote {
+  font-size: 1.4rem;
+  font-weight: 500;
+  line-height: 1.6;
+  color: #333;
+  font-style: normal;
+  margin: 2rem 0;
+  padding: 1.5rem 2rem;
+  border-left: none;
+  background: none;
+  position: relative;
+
+  /* Short horizontal rules above and below */
+  &::before,
+  &::after {
+    content: "";
+    display: block;
+    width: 40px; /* length of the line */
+    height: 1px;
+    background: map-get($palette, 'spicy');
+    margin: 0.75rem auto; /* centers the line */
+  }
+
+
+  @media screen and (min-width: 768px) {
+    font-size: 1.6rem;
+    line-height: 1.7;
+  }
+
+cite {
+  display: block;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #666;
+  margin-top: 1rem;
+  margin-bottom: 0.25rem;
+  text-align: right;
+  line-height: 1.3;
+}
+
+.source {
+  display: block;
+  font-size: 0.95rem;
+  color: #999;
+  font-weight: 400;
+  text-align: right;
+  line-height: 1.2;
+}
+
+  
+}
+
+
 
 /* Blog logo */
 .bloglogo {

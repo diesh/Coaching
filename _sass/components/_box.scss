@@ -1,8 +1,13 @@
-/* Box base */
+/* -------------------------------------------------
+   Box Component Styles
+-------------------------------------------------- */
+
 .box {
-  border: solid 1px var(--nav-color);
-  margin-bottom: _size(element-margin);
-  padding: 1.5em;
+  border-left: 4px solid var(--nav-color);
+  background: #fff;
+  padding: 1.5rem 1.5rem 1.5rem 2rem;
+  margin-bottom: 2rem;
+  position: relative;
 
   > :last-child,
   > :last-child > :last-child,
@@ -17,10 +22,12 @@
   }
 }
 
-/* Default: show sidebar version */
+/* Sidebar version visible by default on desktop */
 .box.subnav {
   display: block;
 }
+
+/* Mobile version hidden by default */
 .subnav-mobile {
   display: none;
 }
@@ -30,30 +37,42 @@
   .box.subnav {
     display: none;
   }
+
   .subnav-mobile {
     display: block;
     margin-top: 2rem;
   }
 }
 
-/* Shared subnav styling (applies to both sidebar + mobile inline) */
+/* Shared styling for both sidebar + inline versions */
 .box.subnav,
 .subnav-mobile {
-  border: 2px solid var(--nav-color);
-  padding: 1.25rem 1.5rem;
+  border-left: 8px solid var(--nav-color);
   background: #fff;
+  padding: 1.5rem 1.5rem 1.5rem 2rem;
+  margin-bottom: 2rem;
+}
+
+
+
+/* Box headings */
+
+.box h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  margin-bottom: 0.75rem;
+  color: #666;
 }
 
 .box.subnav h3,
 .subnav-mobile h3 {
-  font-weight: 700;
-  font-size: 0.875rem;
-  text-transform: uppercase;
-  margin-bottom: 1.5rem;
-  text-decoration: none;
-  color: #111;
+  margin-bottom: 1.25rem;
+  color: #666;
 }
-/* Subnav (sidebar or secondary menus) */
+
+/* Sidebar link list styling */
 .box.subnav ul,
 .subnav-mobile ul {
   list-style: none;
@@ -73,7 +92,6 @@
   padding: 0.25rem 0;
   text-decoration: none;
   font-weight: 500;
-  font-size: 0.975rem;
   color: #111;
   position: relative;
   transition: color 0.25s ease;
@@ -95,7 +113,7 @@
 
 .box.subnav a:hover,
 .subnav-mobile a:hover {
-  font-weight: 800;
+  font-weight: 700;
 }
 
 .box.subnav a:hover::after,
@@ -103,4 +121,40 @@
   opacity: 1;
   transform: scaleX(1);
 }
+
+
+/* Spacing between multiple boxes */
+.box + .box {
+  margin-top: 2rem;
+}
+
+.box ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0 0 1.5rem 0;
+
+  li {
+    position: relative;
+    padding-left: 1.75rem;
+    margin-bottom: 1rem;
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.85em;
+      width: 12px;
+      height: 2px;
+      background-color: var(--nav-color);
+      border-radius: 1px;
+      transition: background-color 0.25s ease;
+    }
+
+    &:hover::before {
+      background-color: map-get($palette, 'spicy');
+      height: 4px;
+    }
+  }
+}
+
 

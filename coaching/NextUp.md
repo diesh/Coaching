@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "What's Next for Your Career"
-description: Build clarity, confidence, and strategic direction for your career in eight weeks. This personalized program helps tech professionals reset, reposition, and land their next role with purpose. Designed by a seasoned design leader and coach.
+description: Build clarity, confidence, and strategic direction for your career in eight weeks. This personalized program helps you reset, reposition, and land your next role with purpose. Designed to help you build a more meaningful, intentional career.
 image: assets/images/nextup.jpg
 nav-menu: true
 nav_active: coaching
@@ -11,15 +11,18 @@ main_class: alt
 
 boxes:
   - title: "What to Expect"
-    content: |
-      This program is personalized, strategic, and grounded in action. You’ll receive:
+    content: >
+      This program is personalized, strategic, and grounded in action.  
+      [Read how we’ll work together](/WorkingTogether.html).
+
+      You’ll receive:
     items:
-      - "<strong>Career Mapping</strong>: Understand where you've been, what drives you, and where you're headed. Get a stronger sense of self including your skills and preferences."
+      - "<strong>Career Mapping</strong>: Understand where you've been, what drives you, and where you are headed. Get a stronger sense of self including your skills and preferences."
       - "<strong>Resume and Story Rewriting</strong>: Present your strengths clearly and with impact, both on paper and in person."
-      - "<strong>Frameworks for Clarity</strong>: Build stronger elevator pitches and case studies, and learn how to talk about your skills and experience in a way that feels authentic and confident."
+      - "<strong>Frameworks for Clarity</strong>: Build stronger elevator pitches and case studies, and learn how to speak to your skills and experience in a way that is authentic and confident."
       - "<strong>LinkedIn Optimization</strong>: Make the words you use to talk about your skills and experience line up with where you want to go next."
       - "<strong>Live Mock Interviews</strong>: Practice with someone who’s hired hundreds and get real-time feedback to sharpen your delivery."
-      - "<strong>Ongoing Guidance</strong>: Optional support between sessions or during high-stakes moments, such as interviews or outreach."
+      - "<strong>Ongoing Guidance</strong>: Support when you need it such as during high-stakes moments such as interviews."
   - title: "Why This Works"
     items:
       - "<strong>Real Insight:</strong> You’ll get practical advice from someone who’s led hiring, not just observed it."
@@ -77,8 +80,6 @@ faqs:
 <section id="one">
   <div class="inner"><!-- START .inner -->
 
-    
-    
 
     <div class="two-col-layout"><!-- START .two-col-layout -->
 
@@ -86,19 +87,17 @@ faqs:
       <header class="major">
       <h1>{{ page.title }}</h1>
     </header>
-
+    <div class="page-intro">
     <h2 id="content">Your Partner in Growth</h2>
       <p>{{ page.description }}</p>
+    </div>
         <h2 id="elements">Weekly Program</h2>
-        <p>This 8-week journey blends reflection, action, and feedback. We'll meet 1:1 online each week, and you'll have exercises to move you forward between sessions.</p>
+        <p>This 8-week journey blends reflection, action, and feedback. We'll meet each week, and you'll have exercises and async support to move you forward between sessions.</p>
 
-          <p>If you're ready to take action or have questions, 
-          <a href="#contact" class="next scrolly">reach out to me</a>. 
-          I'm excited to support your next chapter.
-        </p>
 
-        <blockquote>I’ve built this curriculum from years of experience, but the first session is always about rethinking and reshaping it around your goals. What follows is my ‘typical’ program, though in practice every journey is unique</blockquote>
-
+        <blockquote>I’ve built this curriculum from years of experience. That said, you and I will define your goals in the first session. What follows is my typical program, which I’ll customize to meet you where you are and where you want to go.
+        </blockquote>
+   <p>Discover <a href="{{ 'WorkingTogether.html' | relative_url }}">how we will work together</a> or learn more <a href="{{ 'AboutGagan.html' | relative_url }}">about me</a>. If you have questions and want help in writing your next chapter <a href="#contact" class="next scrolly">let's connect!</a></p>
        
         
       <!-- START Expandable Timeline Section -->
@@ -201,12 +200,6 @@ faqs:
 <!-- END Expandable Timeline Section -->
 
 
-<!-- dynamic sidebar that only appears on mobile -->
-
-{% include coaching-sidebar.html subnav_class="subnav-mobile" %}
-
-<!-- end of dynamic sidebar that only appears on mobile -->
-       
 
         <h2>Frequently Asked Questions</h2>
         <!-- START Expandable FAQ Section -->
@@ -237,21 +230,21 @@ faqs:
 
 {% include coaching-sidebar.html subnav_class="subnav" %}
 
-        {% for box in page.boxes %}
-          <div class="box"><!-- START .box -->
-            <h3>{{ box.title }}</h3>
-            {% if box.content %}
-              <p>{{ box.content }}</p>
-            {% endif %}
-            {% if box.items %}
-              <ul>
-                {% for item in box.items %}
-                  <li>{{ item }}</li>
-                {% endfor %}
-              </ul>
-            {% endif %}
-          </div><!-- END .box -->
+{% for box in page.boxes %}
+  <div class="box">
+    <h3>{{ box.title }}</h3>
+    {% if box.content %}
+      {{ box.content | markdownify }}
+    {% endif %}
+    {% if box.items %}
+      <ul>
+        {% for item in box.items %}
+          <li>{{ item | markdownify | remove: '<p>' | remove: '</p>' }}</li>
         {% endfor %}
+      </ul>
+    {% endif %}
+  </div>
+{% endfor %}
 
        
 
@@ -259,9 +252,16 @@ faqs:
         <div class="testimonials-wrapper single-column" id="testimonial-box" data-count="1" data-box-wrap="true"></div> 
         <!-- End of Testimonial Block -->
 
-      </div><!-- END .right-col -->
+          <!-- dynamic sidebar that only appears on mobile -->
+      {% include coaching-sidebar.html subnav_class="subnav-mobile" %}
+      <!-- end dynamic sidebar that only appears on mobile -->
 
-    </div><!-- END .two-col-layout -->
+      </div>
+      <!-- END .right-col -->
 
-  </div><!-- END .inner -->
+    </div>
+    <!-- END .two-col-layout -->
+
+  </div>
+  <!-- END .inner -->
 </section>

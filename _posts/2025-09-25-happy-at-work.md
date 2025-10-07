@@ -1,14 +1,14 @@
 ---
 layout: post
-title: The Happiness Lifecyle
-description: "Why do so few people say, “I love my job!”?  Is it really too much to expect happiness at work? What questions should you ask at every stage, from interviews to exit, to make sure your job is truly worth waking up to? Can you actually refuse to be unhappy at work?"
+title: Can I be happy at work?
+description: "Why do so few people say, “I love my job!”?  Is it really too much to expect happiness at work? What questions should you ask at every stage, from interviews to exit, to help make your job truly worth waking up to? Can you actually refuse to be unhappy at work?"
 image: assets/images/happiness.jpg
 masthead_caption: Photo by Windows on Unsplash
 date: 2025-09-30
 comments: true
 masthead_url: https://unsplash.com/photos/woman-in-brown-sweater-sitting-on-white-couch-GGdnntBsHMw
 ---
-I love my job! Not something you hear much. And the last few years have proven that  companies aren’t looking out for _you_. Jobs are unstable, layoffs hit overnight, and loyalty is mostly a slogan. The one thing you can count on? You.  
+I love my job! Not something you hear much. And the last few years have proven that companies aren’t looking out for _you_. Jobs are unstable, layoffs hit overnight, and loyalty is mostly a slogan. The one thing you can count on? You.  
 
 It may seem overly luxe to demand happiness at work. But it isn’t self-indulgent, it lines up with what companies want - productive folks who are reliable and achieve real results.
 

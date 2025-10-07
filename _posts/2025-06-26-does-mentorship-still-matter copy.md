@@ -10,7 +10,7 @@ masthead_url: https://unsplash.com/photos/man-in-white-shirt-and-black-shorts-ju
 ---
 _Is AI going to kill your job? 🤷‍♂️ AI can’t replace the magic that happens between two people._
 > “Learn from trends, but design clothes that still flatter the body.”  
-> — My mother, a fashion designer
+> <cite>— My mother</cite><span class="source">Fashion Designer</span>
 
 I think of that every time I see another *“10 ways to get AI to help you [fill in the blank].”*
 

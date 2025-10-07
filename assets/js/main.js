@@ -238,13 +238,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 // ----------------------------------------------
-// TESTIMONIALS FADE-IN LOGIC 
+// TESTIMONIALS FADE-IN LOGIC (FIXED)
 // ----------------------------------------------
 
-
 function getTestimonialsPath() {
-  const parts = window.location.pathname.split("/").filter(Boolean);
-  return `/${parts[0]}/assets/js/testimonials.json`;
+  // Always fetch from the site root
+  return "/assets/js/testimonials.json";
 }
 
 function fadeAndLoad(container, testimonials) {
@@ -279,6 +278,7 @@ function fadeAndLoad(container, testimonials) {
 
   container.innerHTML = blocks.join("");
 
+  // Fade-in effect
   setTimeout(() => {
     container.querySelectorAll(".fade-in-box").forEach((b) => b.classList.remove("fade-in-box"));
   }, 900);
@@ -305,22 +305,22 @@ function fadeAndLoad(container, testimonials) {
 }
 
 function initTestimonials() {
-  const containers = document.querySelectorAll("#testimonial-box");
+  const containers = document.querySelectorAll("#testimonial-box, #testimonial-box-coaching, .testimonials-wrapper");
   if (!containers.length) return;
 
   fetch(getTestimonialsPath())
-    .then((res) => res.json())
+    .then((res) => {
+      if (!res.ok) throw new Error("Testimonials JSON not found");
+      return res.json();
+    })
     .then((data) => {
       const testimonials = data.testimonials;
       if (!testimonials?.length) return;
       containers.forEach((c) => fadeAndLoad(c, testimonials));
-    });
+    })
+    .catch((err) => console.warn("⚠️ Testimonials not loaded:", err.message));
 }
 
 window.addEventListener("load", () => {
   setTimeout(initTestimonials, 50);
 });
-
-
-
-

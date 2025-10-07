@@ -1,6 +1,7 @@
 ---
 layout: page
-title: About Gagan
+title: "About"
+subtitle: "Gagan Diesh"
 description: 
 image: assets/images/g-morocco.jpg
 nav-menu: true
@@ -21,7 +22,7 @@ main_class: alt
         <div class="profile-image-wrapper">
           <img src="{{ '/assets/images/g-morocco.jpg' | relative_url }}" alt="Gagan Diesh">
             <div class="smiley-overlay">
-            <a href="http://google.com" aria-label="Go to Good Question page">
+            <a href="https://diesh.ca/landing.html" aria-label="Good Question">
             <svg class="smiley" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
             <circle class="eye" cx="20" cy="20" r="4" />
             <circle class="eye" cx="40" cy="20" r="4" />
@@ -79,6 +80,9 @@ main_class: alt
       </div>
 
       <p>Only Humans can lift other humans. If we want to fix how we work, our processes, or our relationships, it all begins with empathy. Chances are I have been where you are. I see you. I use AI to support my process, but the coaching relationship is sacred and always between you and me. Psst, <a href="{{ '/UseofAI.html' | relative_url }}">here’s how I use AI</a>.</p>
+
+      <blockquote> Coaching is a two-way commitment. <a href="{{ '/WorkingTogether.html' | relative_url }}">Here’s how we’ll work together</a>: what you can expect from me, and what I’ll expect from you.</blockquote>
+
       
       <p>I coach with a mix of empathy and accountability. I’ll support you AND I’ll challenge you to name what you want, own what’s holding you back, and do the work to grow.</p>
 
@@ -97,7 +101,7 @@ main_class: alt
         <div class="profile-image-wrapper">
           <img src="{{ '/assets/images/g-morocco.jpg' | relative_url }}" alt="Gagan Diesh">
           <div class="smiley-overlay">
-          <a href="http://google.com" aria-label="Go to Good Question page">
+          <a href="https://diesh.ca/landing.html" aria-label="Good Question">
             <svg class="smiley" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
               <circle class="eye" cx="20" cy="20" r="4" />
               <circle class="eye" cx="40" cy="20" r="4" />
@@ -114,6 +118,19 @@ main_class: alt
 
       <!-- Mobile inline version -->
       {% include coaching-sidebar.html subnav_class="subnav-mobile" %}
+
+      <!-- links re coaching practice -->
+
+<div class="box {{ include.subnav_class | default: 'subnav' }}">
+  <h3>Explore More</h3>
+  <ul>
+    <li><a href="{{ '/UseofAI.html' | relative_url }}">How I use AI</a></li>
+    <li><a href="{{ '/WorkingTogether.html' | relative_url }}">How we'll work together</a></li>
+  </ul>
+</div>
+
+
+
 
       <!-- Testimonial Block -->
       <div class="testimonials-wrapper single-column" id="testimonial-box" data-count="1" data-box-wrap="true"></div> 
