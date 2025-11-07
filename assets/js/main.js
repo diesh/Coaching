@@ -324,3 +324,58 @@ function initTestimonials() {
 window.addEventListener("load", () => {
   setTimeout(initTestimonials, 50);
 });
+
+
+
+// share blog posts//
+document.addEventListener('DOMContentLoaded', function() {
+  // Get elements by ID (single widget only)
+  var shareBtn = document.getElementById('share-btn');
+  var shareModal = document.getElementById('share-modal');
+  var copyBtn = document.getElementById('copy-link-btn');
+  var copySuccess = document.getElementById('copy-success');
+  var linkedinShare = document.getElementById('linkedin-share');
+
+  // Always hide modal on load
+  if (shareModal) shareModal.hidden = true;
+
+  // Toggle modal on shareBtn click
+  shareBtn.addEventListener('click', function(e) {
+    e.stopPropagation();
+    shareModal.hidden = !shareModal.hidden;
+    if (!shareModal.hidden) {
+      // Set LinkedIn share link with current URL
+      linkedinShare.href = 'https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(window.location.href);
+    }
+  });
+
+  // Copy Link functionality
+  copyBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+    navigator.clipboard.writeText(window.location.href).then(function() {
+      copySuccess.hidden = false;
+      setTimeout(function() {
+        copySuccess.hidden = true;
+      }, 1200);
+    });
+  });
+
+  // Click outside closes modal
+  document.addEventListener('mousedown', function(e) {
+    if (!shareModal.hidden && !shareModal.contains(e.target) && !shareBtn.contains(e.target)) {
+      shareModal.hidden = true;
+    }
+  });
+
+  // ESC key closes modal
+  document.addEventListener('keydown', function(e) {
+    if (!shareModal.hidden && e.key === "Escape") {
+      shareModal.hidden = true;
+    }
+  });
+
+  // Prevent modal from staying open if you refresh after clicking share
+  window.addEventListener('pageshow', function() {
+    if (shareModal) shareModal.hidden = true;
+  });
+});
