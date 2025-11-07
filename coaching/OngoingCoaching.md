@@ -3,7 +3,7 @@
 layout: page
 title: "Ongoing Coaching"
 description: Career growth isn’t a one-time event, it’s a journey. With ongoing coaching, you’ll have a trusted partner to help you navigate challenges, stay accountable, and achieve your goals. 
-image: assets/images/ongoing.jpg
+masthead_image: assets/images/ongoing.jpg
 nav-menu: true
 nav_active: coaching
 nav-color: "#CFDA90"
@@ -76,7 +76,7 @@ faqs:
 ---
 
 <!-- Masthead -->
-<div class="brandimage_masthead" style="background-image: url('{{ site.baseurl }}/{{ page.image }}');"></div>
+<div class="brandimage_masthead" style="background-image: url('{{ site.baseurl }}/{{ page.masthead_image }}');"></div>
 
 <section id="one">
   <div class="inner"><!-- section inner wrapper -->

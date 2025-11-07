@@ -219,3 +219,32 @@ $header-h: 72px !default;
   opacity: 1;
   transition-delay: 1s;
 }
+
+
+/* ==========================================================================
+   HERO — RESPONSIVE TYPOGRAPHY
+   ========================================================================== */
+
+@include breakpoint(small) {
+  #banner.major {
+    padding-top: 5rem; /* avoids overlap with sticky nav */
+    padding-bottom: 3rem;
+
+    .hero-display {
+      font-size: clamp(2.4rem, 6vw, 3.4rem); /* fluid scaling */
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+
+    .hero-tagline {
+      font-size: clamp(1rem, 3.4vw, 1.25rem);
+      line-height: 1.4;
+      margin-top: 0.75rem;
+    }
+
+    .actions {
+      margin-top: 2rem;
+    }
+  }
+}
+

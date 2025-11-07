@@ -8,7 +8,7 @@ hide_from_tiles: true
 nav-color: "#8d82c4"
 is_special: true
 weight: 50
-permalink: /landinggg.html
+permalink: /goodquestion.html
 nav_active: goodquestion
 ---
 <!-- <style>

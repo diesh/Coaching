@@ -16,11 +16,38 @@
           <header class="major">
             <br />
             <nav class="breadcrumb">
-              <a href="{{ site.baseurl }}/landing.html">Good Question</a> &raquo;
+              <a href="{{ site.baseurl }}/goodquestion.html">Good Question</a>
             </nav>
 
             <h1>{{ page.title }}</h1>
-            <p class="post-date">{{ page.date | date: "%B %-d, %Y" }}</p>
+<p class="post-date">
+  {% assign words = page.content | number_of_words %}
+  {% assign minutes = words | divided_by:200 %}
+  {% if minutes < 1 %}
+    <span class="read-time">1 min read</span>
+  {% else %}
+    <span class="read-time">{{ minutes | ceil }} min read</span>
+  {% endif %}
+  <time class="post-date-text" datetime="{{ page.date | date: '%Y-%m-%d' }}">
+    {{ page.date | date: "%B %-d, %Y" }}
+  </time>
+  <span class="share-inline">
+    <button id="share-btn" aria-label="Share this post" style="border:none;box-shadow:none;background:none;">
+      <svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true" fill="none">
+        <path d="M11 13V6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+        <path d="M8.6 8.4L11 6L13.4 8.4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" fill="none"/>
+        <rect x="5.5" y="13" width="11" height="7" rx="2" stroke="currentColor" stroke-width="1.5" fill="none"/>
+      </svg>
+    </button>
+    <span id="share-modal" class="share-modal" hidden>
+      <button type="button" id="copy-link-btn">Copy Link</button>
+      <a id="linkedin-share" href="#" target="_blank" rel="noopener">Share to LinkedIn</a>
+      <span id="copy-success" class="copy-success" hidden>Copied!</span>
+    </span>
+  </span>
+</p>
+
+
           </header>
 
           <!-- Two-column layout: post content + sidebar -->
@@ -147,7 +174,7 @@
             {% endfor %}
           </div>
 
-          <a href="/landing.html" class="button next">All the Good Questions</a>
+          <a href="/goodquestion.html" class="button next">All the Good Questions</a>
         </div>
       </section>
     </main>

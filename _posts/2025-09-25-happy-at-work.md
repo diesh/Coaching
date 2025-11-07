@@ -15,7 +15,9 @@ It may seem overly luxe to demand happiness at work. But it isn’t self-indulge
 ## Happiness Matters! Here are the receipts
 
 - **Safety first.** Google’s Project Aristotle found psychological safety is the #1 factor in high-performing teams. Translation: if you feel safe to speak up, you do better work. Back-stabby cultures tank performance.
-	<blockquote>A strong team culture was correlated with each member’s perception of the consequences of taking an interpersonal risk. Those on teams with strong cultures feel safe taking risks in the face of being seen as ignorant, incompetent, negative, or disruptive. In a team with high psychological safety, teammates feel safe to take risks around their team members. They feel confident that no one on the team will embarrass or punish anyone else for admitting a mistake, asking a question, or offering a new idea.</blockquote>
+	<blockquote>A strong team culture was correlated with each member’s perception of the consequences of taking an interpersonal risk. Those on teams with strong cultures feel safe taking risks in the face of being seen as ignorant, incompetent, negative, or disruptive. In a team with high psychological safety, teammates feel safe to take risks around their team members. They feel confident that no one on the team will embarrass or punish anyone else for admitting a mistake, asking a question, or offering
+	 a new idea.<cite>Project Aristotle</cite><span class="source">Google Research</span>
+	</blockquote>
     
 - **Happy = productive.**  [Experiments show](https://www.researchgate.net/publication/46442857_Happiness_and_Productivity) people given “happiness shocks” (snacks, comedy clips, the dream) were 12% more productive. No shocker there...when you hate your boss, that's your focus and nothing else.
     

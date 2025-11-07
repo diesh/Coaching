@@ -162,28 +162,54 @@ hr.post-divider {
   }
 }
 
-
-/* ---------------------------------------------
-   Blog Cards on Landing Page ("Good Question")
-   --------------------------------------------- */
 #goodquestion-posts {
   margin-top: 2rem;
 
-  /* Each blog post row */
   .post-row {
+    position: relative;
+    border-bottom: 3px solid transparent; // Always 3px, never changes
+    box-sizing: border-box; // Prevents padding/border shifts
+
+    // Default state: overlay a 1px border visually
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      left: 0; right: 0;
+      bottom: 0;
+      height: 1px;
+      background: map-get($palette, 'border');
+      z-index: 2;
+      pointer-events: none;
+      transition: background 0.18s;
+    }
+
+    // On hover/focus: swap to 3px colored border, hide the 1px overlay
+    &:hover,
+    &:focus-within {
+      border-bottom-color: map-get($palette, 'spicy');
+      &::after { display: none; }
+    }
+
+    // Remove border for last child, except on hover
+    &:last-child {
+      border-bottom: none;
+      &::after { display: none; }
+    }
+
+    // ------------------------------------------
+    // Rest of your card layout (no changes below)
+    // ------------------------------------------
     display: flex;
     align-items: flex-start;
     gap: 1.5rem;
     margin-bottom: 2rem;
     padding-bottom: 1.5rem;
-    border-bottom: 1px solid map-get($palette, 'border');
     background: none;
     box-shadow: none;
-    position: relative;
 
-    /* Post image */
     > .image {
-      flex: 0 0 180px; // image column
+      flex: 0 0 180px;
       margin: 0;
 
       img {
@@ -196,7 +222,6 @@ hr.post-divider {
       }
     }
 
-    /* Post text content */
     > .content {
       flex: 1;
       display: flex;
@@ -206,13 +231,25 @@ hr.post-divider {
       h3 {
         margin: 0 0 0.5rem 0;
         font-size: 1.1rem;
+        font-weight: 600;
+        color: map-get($palette, 'nav-color');
+        transition: color 0.18s;
+
+        // Row hover or link hover highlights h3
+        .post-row:hover &,
+        &:hover,
+        &:focus {
+          color: map-get($palette, 'highlight');
+        }
 
         a.post-title {
-          font-weight: 600;
-          text-decoration: none;
-          color: map-get($palette, 'nav-color');
+          color: inherit;
+          text-decoration: underline;
+          transition: color 0.18s;
 
-          &:hover {
+          &:hover,
+          &:focus {
+            color: map-get($palette, 'highlight');
             text-decoration: underline;
           }
         }
@@ -225,45 +262,20 @@ hr.post-divider {
       }
     }
 
-    /* Hover underline on whole row */
-    &:hover {
-      border-bottom: 3px solid map-get($palette, 'spicy');
-    }
-
-    /* Hidden overlay link to make the whole row clickable */
+    // Hidden overlay to make the whole row clickable
     .post-link-overlay {
       position: absolute;
-      inset: 0;              // cover the entire card
-      z-index: 3;            // above everything
-      text-indent: -9999px;  // hide text
+      inset: 0;
+      z-index: 3;
+      text-indent: -9999px;
       overflow: hidden;
     }
 
-    /* Keep text + image above overlay so they remain visible */
+    // Keep text + image above overlay
     .image,
     .content {
       position: relative;
       z-index: 2;
-    }
-
-    /* Title styling to mimic link appearance */
-    .post-title {
-      font-weight: 600;
-      color: map-get($palette, 'nav-color');
-      text-decoration: underline;
-    }
-
-    &:hover .post-title {
-      text-decoration: none;
-    }
-
-    /* Remove divider line from last post but keep hover effect */
-    &:last-child {
-      border-bottom: none;
-    }
-
-    &:last-child:hover {
-      border-bottom: 3px solid map-get($palette, 'spicy');
     }
   }
 }

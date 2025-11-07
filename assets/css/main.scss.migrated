@@ -10,10 +10,12 @@ html {
 }
 
 // 1. Imports: All variable, mixin, and function definitions must load first
-@import "libs/vars";
-@import "libs/functions";
-@import "libs/mixins";
-@import "libs/skel";
+@use 'libs/vars' as vars;
+@use 'libs/functions' as functions;
+@use 'libs/mixins' as mixins;
+@use 'libs/skel' as skel;
+
+
 
 // 2. External resources
 @import "font-awesome.min.css";
@@ -55,29 +57,29 @@ html {
 }
 
 // 6. Base styles
-@import "base/page";
-@import "base/typography";
+@use 'base/page' as page;
+@use 'base/typography' as typography;
 
 // 7. Component styles
-@import "components/section";
-@import "components/form";
-@import "components/box";
-@import "components/icon";
-@import "components/image";
-@import "components/list";
-@import "components/table";
-@import "components/button";
-@import "components/contact-method";
-@import "components/spotlights";
-@import "components/tiles";
+@use 'components/section' as section;
+@use 'components/form' as form;
+@use 'components/box' as box;
+@use 'components/icon' as icon;
+@use 'components/image' as image;
+@use 'components/list' as list;
+@use 'components/table' as table;
+@use 'components/button' as button;
+@use 'components/contact-method' as contact-method;
+@use 'components/spotlights' as spotlights;
+@use 'components/tiles' as tiles;
 
 // 8. Layout styles
-@import "layout/header";
-@import "layout/banner";  // banner styles live in banner.scss
-@import "layout/contact";
-@import "layout/footer";
-@import "layout/wrapper";
-@import "layout/menu";
+@use 'layout/header' as header;
+@use 'layout/banner' as banner;
+@use 'layout/contact' as contact;
+@use 'layout/footer' as footer;
+@use 'layout/wrapper' as wrapper;
+@use 'layout/menu' as menu;
 
 
 /* --------------------------------------------------
@@ -86,18 +88,6 @@ html {
 :root {
   --header-h:   72px;
   --content-w:  1100px;
-  --brand-color: #{$brand-color};
-  --nav-color: #{$nav-color};
-  --link-color: #{$link-color};
-  --text-color: #{$text-color};
-  --background-color: #{$background-color};
-  --heading-color: #{$heading-color};
-  --accent1: #{$accent1};
-  --accent2: #{$accent2};
-  --accent3: #{$accent3};
-
-  --font-family-base: #{$font-family-base};
-  --font-family-heading: #{$font-family-heading};
 }
 
 /* --------------------------------------------------
@@ -115,6 +105,7 @@ html {
   top: 0; left: 0;
   width: 100%; height: var(--header-h);
   background: #fff;
+
   z-index: 999;
 }
 
@@ -125,7 +116,7 @@ html {
   left: 0;
   width: 100%;
   height: 1px;
-  background: linear-gradient(
+background: linear-gradient(
     to right,
     transparent 20%,
     var(--nav-color) 50%,
@@ -173,10 +164,12 @@ html {
   @include breakpoint('large')  { max-height: 30vh; }
 }
 
+
 .inner,
 section {
   margin-bottom: 3rem; // or 2.5rem, whatever fits your vertical rhythm
 }
+
 
 /* --------------------------------------------------
    Force consistent header height at xlarge breakpoint
@@ -231,3 +224,5 @@ section {
   @include breakpoint(small)  { padding: 0; }
   @include breakpoint(xsmall) { padding: 0; }
 }
+
+

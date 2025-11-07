@@ -2,7 +2,7 @@
 layout: page
 title: "What's Next for Your Career"
 description: Build clarity, confidence, and strategic direction for your career in eight weeks. This personalized program helps you reset, reposition, and land your next role with purpose. Designed to help you build a more meaningful, intentional career.
-image: assets/images/nextup.jpg
+masthead_image: assets/images/nextup.jpg
 nav-menu: true
 nav_active: coaching
 nav-color: "#1B9C85"
@@ -75,7 +75,7 @@ faqs:
       - Excited to get to know you!
 ---
 
-<div class="brandimage_masthead" style="background-image: url('{{ site.baseurl }}/{{ page.image }}');"></div>
+<div class="brandimage_masthead" style="background-image: url('{{ site.baseurl }}/{{ page.masthead_image }}');"></div>
 
 <section id="one">
   <div class="inner"><!-- START .inner -->

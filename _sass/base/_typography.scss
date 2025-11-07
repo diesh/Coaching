@@ -89,7 +89,15 @@ b { font-weight: 700; }
 a {
   color: $link-color;
   text-decoration: none;
-  &:hover { color: map-get($palette, 'nav-color'); }
+  &:hover { 
+    color: map-get($palette, 'highlight'); 
+    text-decoration: none;
+  }
+
+}
+
+a.button, a.button:hover {
+  text-decoration: none !important;
 }
 
 /* -------------------------------------------------
@@ -147,12 +155,10 @@ a {
 
 
 /* -------------------------------------------------
-   TESTIMONIALS (fixed layout and polish)
+   TESTIMONIALS 
    ------------------------------------------------- */
  
-/* -------------------------------------------------
-   TESTIMONIALS (fixed layout + spicy fade-in)
-   ------------------------------------------------- */
+
 .testimonials-section {
   width: 100%;
   padding: 0;
@@ -546,6 +552,117 @@ main .spacer {
    BLOG POST LAYOUT — Scoped to .post-page
    --------------------------------------- */
 
+.post-date {
+  display: flex;
+  align-items: baseline; // baseline aligns icon & text
+  gap: 0.7em;
+  margin-top: -2rem;
+  font-size: 0.98em;
+  color: #999;
+  font-weight: 400;
+  line-height: 1.2;
+
+   > *:not(:first-child)::before {
+  content: "·";
+  color: map-get($palette, 'spicy');
+  display: inline-block;
+  margin-left: 0.25em;
+  margin-right: 0.25em;
+  font-weight: 400;
+  font-size: 1.18em;   // Tweak between 1.1 and 1.2 for balance
+  vertical-align: middle;
+  position: relative;
+  top: -0.07em;
+}
+
+
+  .read-time {
+    color: #888;
+  
+
+  }
+
+  .share-inline {
+    position: relative;
+
+
+    #share-btn {
+      background: none;
+      border: none;
+      padding: 0.02em 0.08em;
+      margin-left: 0;
+      color: var(--nav-color, #1b9c85);
+      cursor: pointer;
+      transition: background 0.13s;
+      line-height: 1;
+      align-self: baseline;
+      border-radius: 0; // Remove corners!
+
+      // Remove pseudo-line under this button only
+      &::after {
+        content: none !important;
+        display: none !important;
+      }
+
+      svg {
+        display: inline-block;
+        vertical-align: -0.13em; // Adjust as needed for perfect alignment
+      }
+
+      &:hover,
+      &:focus {
+        background: #f3faf7;
+        outline: none;
+      }
+    }
+
+    .share-modal {
+      position: absolute;
+      top: 2em;
+      right: 0;
+      min-width: 250px;
+      background: #fff;
+      box-shadow: 0 4px 32px rgba(0,0,0,0.08);
+      border-radius: 0; // Remove corners!
+      padding: 0.7em 1em;
+      z-index: 99;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4em;
+      font-size: 0.97em;
+
+      &[hidden] {
+        display: none !important;
+      }
+
+      button, a {
+        background: none;
+        border: none !important;
+        text-decoration: none !important;
+        color: var(--nav-color, #1b9c85);
+        font-weight: 500;
+        cursor: pointer;
+        padding: 0.1em 0;
+        text-align: left;
+        transition: color 0.1s;
+        border-radius: 0; // Remove corners!
+        &:hover, &:focus {
+           color: var(--link-color, #1b9c85);
+          text-decoration: underline;
+        }
+      }
+    }
+
+    .copy-success {
+      color: #17934b;
+      font-size: 0.93em;
+      margin-top: 0.18em;
+    }
+  }
+}
+
+
+
 body.post-page {
   background: white;
 
@@ -581,21 +698,21 @@ body.post-page {
 
     figure.image.main {
       margin: 2rem auto;
-      text-align: center;
+      text-align: left;
 
       figcaption {
         font-size: 0.9rem;
-        color: map-get($palette, muted);
-        margin-top: 0.5rem;
+        margin-top: -1.5rem;
+         a {
+        color: map-get($palette, brand-color);
+        &:hover {
+          text-decoration: underline;
+        }
+      }
       }
     }
 
-    .post-date {
-      font-size: 0.95rem;
-      color: map-get($palette, muted);
-      margin-bottom: 2rem;
-    }
-
+  
    
 
     ul, ol {

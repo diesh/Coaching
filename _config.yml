@@ -7,11 +7,13 @@ description: I help design + product professionals and teams unlock their full p
 blog_tagline: "Spicy musings about UX, design, tech, and the world we live in."
 
 
-# url: "https://diesh.ca"   # canonical site URL
-# baseurl: ""               # keep empty if site is served from root
-
-url: "https://diesh.github.io"
+url: "https://diesh.ca"
 baseurl: ""
+image: /assets/images/Gagan_Diesh_hello.png
+seo_image: /assets/images/Gagan_Diesh_hello.png
+
+
+
 
 include:
   - CNAME

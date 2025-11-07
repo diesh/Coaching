@@ -10,9 +10,9 @@
 
   <div class="tile-inner"> <!-- NEW WRAPPER -->
     {% unless page.title == "Executive Coaching" %}
-  {% if tile.image %}
+  {% if tile.masthead_image %}
     <div class="tile-image">
-      <img src="{{ tile.image | relative_url }}" alt="{{ tile.title }}">
+      <img src="{{ tile.masthead_image | relative_url }}" alt="{{ tile.title }}">
     </div>
   {% endif %}
 {% endunless %}
@@ -23,7 +23,6 @@
     </header>
   </div>
 </article>
-
     {% endunless %}
   {% endfor %}
 </section>

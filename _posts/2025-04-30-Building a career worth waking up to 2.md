@@ -26,7 +26,7 @@ We are still living in what's left of the industrial age. And one of the continu
  <h3>Reality</h3>
     <p> Promotions are often based on politics, visibility, or a ‘vibe fit’ with leadership rather than merit or performance. Merit (hopefully) still matters, , but it's not always the deciding factor. </p>
     </div>
-    </div>
+    
 
 **Instead:**  
 Treat your career like a *design project*, not a climb. Lead with curiosity and ask yourself:

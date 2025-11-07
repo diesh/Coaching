@@ -37,7 +37,9 @@
   left: 0;
 }
 
-/* mobile */
+/* -------------------------------
+   Mobile Menu Refinements
+   ------------------------------- */
 @media (max-width: 1100px) {
   .menu-icon {
     position: fixed;
@@ -62,20 +64,23 @@
     transform: translateY(-7px) rotate(-45deg);
   }
 
+  /* menu container */
   #nav-menu {
     position: fixed !important;
     top: 64px;
     right: 0;
-    left: auto !important;
-    width: 200px;
-    max-width: 92vw;
+    left: 0 !important;
+    width: 100%;
+    max-height: calc(100vh - 64px);
     background: #fff;
     list-style: none;
     margin: 0;
-    padding: 12px 18px;
+    padding: 1.5rem 1.5rem 2rem; /* more whitespace */
     display: none !important;
     flex-direction: column;
+    gap: 0.75rem;
     z-index: 1999;
+    border-top: 1px solid rgba(0,0,0,0.08); /* subtle divider for structure */
   }
 
   #menu-btn:checked ~ nav #nav-menu {
@@ -83,40 +88,40 @@
   }
 
   #nav-menu li {
-    padding: 10px 0;
     margin: 0;
+    padding: 0;
   }
 
   #nav-menu a {
-    display: inline-block;
-    position: relative;
-    padding: 0 18px 0 0;
+    display: block;
+    padding: 0.75rem 0 0.75rem 0.5rem; /* extra left space */
+    font-size: 1rem;
+    line-height: 1.4;
     text-decoration: none;
+    color: #111;
+    border-left: 3px solid transparent;
+    transition: all 0.2s ease;
   }
 
-  #nav-menu a::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -6px;
-    width: 0;
-    height: 2px;
-    background: currentColor;
-    opacity: 0.85;
-    transition: width 0.18s;
-  }
-
-  #nav-menu a:hover::after,
-  #nav-menu a:focus-visible::after,
-  #nav-menu a.active::after {
-    width: 100%;
+  #nav-menu a:hover,
+  #nav-menu a:focus-visible {
+    border-left-color: var(--nav-color);
+    color: var(--nav-color);
+    background: rgba(0,0,0,0.02);
   }
 
   #nav-menu a.active {
     color: var(--brand-color);
     font-weight: 600;
+    border-left-color: var(--brand-color);
+  }
+
+  /* remove underlines or animated bars */
+  #nav-menu a::after {
+    content: none;
   }
 }
+
 
 /* desktop */
 @media (min-width: 1101px) {
