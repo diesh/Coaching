@@ -1,7 +1,7 @@
 ---
 layout: home
-title: Home
-description: "Hi, I'm Gagan Diesh. I help design and product leaders get hired, grow their influence, and align their teams."
+title: "Gagan Diesh — Coaching for Design & Product Leaders"
+description: "I help design and product leaders get hired, grow their influence, and align their teams."
 nav-menu: true
 nav-active: home
 hero_title: "Is your career working for you?"

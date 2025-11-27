@@ -21,21 +21,21 @@ main_class: alt
       <div class="page-intro">
         <header class="major">
           <h1>My Use of AI</h1>
-          <p>AI is an assistant, not a coach. My coaching is built on trust, listening, and accountability. Our connection is human — and it will never be replaced by robots.</p>
+          <p>AI is an assistant, not a coach. My coaching is built on trust, listening, and accountability. Our connection is human and will never be replaced by robots.</p>
         </header>
       </div>
 
       <h2>In Coaching</h2>
       <ul>
         <li>I use AI to summarize notes and surface themes from coaching sessions, helping me reduce bias and avoid tunnel vision.</li>
-        <li>I maintain a library of prompts, frameworks, and exercises from design thinking, leadership, and product strategy work — AI helps me adapt these for each client while protecting confidentiality.</li>
+        <li>I maintain a library of prompts, frameworks, and exercises from design thinking, leadership, and product strategy work. AI helps me adapt these for each client while protecting confidentiality.</li>
         <li>I use AI as a proofreader, editor, and bias check for my written work, ensuring clarity and precision without losing my voice.</li>
       </ul>
 
       <h2>On This Website</h2>
       <ul>
-        <li>I collaborated with AI to co-write and refine my site’s code, layout, and content — even though I’m not a coder (sorry, Kim #iykyk!).</li>
-        <li>AI helps test design changes, proof content, and catch inconsistencies — but I review everything to make sure it reflects my intent and tone.</li>
+        <li>I collaborated with AI to co-write and refine my site’s code, layout, and content. I’m not a coder (sorry, Kim #iykyk!)!</li>
+        <li>AI helps test design changes, proof content, and catch inconsistencies but I review everything to make sure it reflects my intent and tone.</li>
         <li>It’s like having a very fast, occasionally annoying assistant who always needs editing.</li>
       </ul>
 
@@ -44,7 +44,7 @@ main_class: alt
       <ul>
         <li>Your confidentiality is always protected.</li>
         <li>I’ll use AI to save time and remove bias, not to make decisions about you or your career.</li>
-        <li>Every word, idea, and insight we create together is shaped by people — not machines.</li>
+        <li>Every word, idea, and insight we create together is shaped by people not machines.</li>
       </ul>
 
       <p>Coaching is about curiosity and progress. AI is just one more tool to help us focus on what really matters: your growth and impact.</p>
