@@ -124,6 +124,8 @@
       document.getElementById('current-year').textContent = new Date().getFullYear();
     });
   </script>
+
+
 </footer>
 
 
@@ -132,6 +134,35 @@
 
 <!-- Enhanced JS handlers (unchanged) -->
 <script>
+
+  // ----------------------------------------------
+  //  HERO TEXT ALTER BASED ON URL PARAM
+  // ----------------------------------------------
+  
+document.addEventListener('DOMContentLoaded', function() {
+  const urlParams = new URLSearchParams(window.location.search);
+
+  if (urlParams.has('portfolio')) {
+    // Jekyll injects the values from your MD file directly here
+    const altTitle = "{{ page.portfolio_hero_title }}";
+    const altTagline = "{{ page.portfolio_hero_tagline }}";
+
+    // We find the elements by their existing classes in home.html
+    const titleEl = document.querySelector('.hero-display');
+    const taglineEl = document.querySelector('.hero-tagline');
+
+    if (titleEl && altTitle) {
+      titleEl.innerText = altTitle;
+    }
+    
+    if (taglineEl && altTagline) {
+      // Use innerHTML in case you use <strong> tags in your MD tagline
+      taglineEl.innerHTML = altTagline;
+    }
+  }
+});
+
+
   /* FAQ accordion */
   document.querySelectorAll('.faq-question').forEach(btn => {
     btn.addEventListener('click', () => {

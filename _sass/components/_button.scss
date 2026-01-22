@@ -23,7 +23,7 @@
   max-width: 100%;
 
   /* type & colour */
-  font: 600 14.9333px/1 Arial, sans-serif;
+  font: 600 14.9333px/1 "Open Sans", sans-serif;
   letter-spacing: 3.73333px;
   text-transform: uppercase;
   color: #fdfdfd;
@@ -87,6 +87,56 @@
     width: 14px;  /* Adjust arrow size */
     height: 14px;
   }
+}
+
+/* Additional styles for back to port button which shows up if folks from port */
+
+/* Force vertical stacking and left alignment */
+#banner .content {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 1rem; /* Space between buttons */
+}
+
+.masthead_link-secondary {
+    /* Initial hidden state */
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 1s ease, transform 1s ease, color 0.3s ease;
+    
+    /* Alignment & Typography */
+    padding-left: 2.5em; /* Lines up text with primary button */
+    display: inline-flex;
+    align-items: center;
+    font: 1em sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 3.73333px;
+    text-transform: uppercase;
+    color: #ffffff;
+    text-decoration: none;
+    cursor: pointer;
+
+    /* Reveal state */
+    &.is-visible {
+        opacity: 0.6;
+        transform: translateY(0);
+    }
+
+    &:hover {
+        opacity: 1 !important;
+      font-weight: 800;
+     .arrow svg { transform: translateX(5px); }
+    }
+
+    .arrow {
+        margin-left: 0.8rem;
+        svg {
+            transition: transform 0.3s ease;
+            path { stroke: currentColor; fill: none; }
+        }
+    }
 }
 
 html { scroll-behavior: smooth; }

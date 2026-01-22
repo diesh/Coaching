@@ -3,6 +3,7 @@
   {% include head.html %}
 
   <body style="--brand-color: {{ page.brand_color }}; --nav-color: {{ page.nav-color | default: '#1B9C85' }};">
+
     {% include header.html %}
 
     <main id="main" class="{{ page.main_class | default: '' }}">
@@ -10,5 +11,8 @@
     </main>
 
     {% include footer.html %}
+    
+
+
   </body>
 </html>
