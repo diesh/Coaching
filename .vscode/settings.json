@@ -1,5 +1,0 @@
-{
-  "terminal.integrated.env.osx": {
-    "PATH": "/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin:${env:HOME}/.gem/ruby/$(ruby -e 'print RUBY_VERSION')/bin:${env:PATH}"
-  }
-}
