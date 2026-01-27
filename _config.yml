@@ -6,14 +6,11 @@ description: I help design + product professionals and teams unlock their full p
 
 blog_tagline: "Spicy musings about UX, design, tech, and the world we live in."
 
-
 # url: "https://diesh.ca"   # canonical site URL
 # baseurl: ""               # keep empty if site is served from root
 
 url: "https://diesh.ca"
 baseurl: ""
-
-
 
 author:
 street_address: 
@@ -23,12 +20,9 @@ zip_code:
 country: U
 phone: 
 
-
 # homepage tiles
 tiles-source: pages # accepts "posts" or "pages"
 tiles-count: 6
-
-
 
 # social settings (key must match name of font awesome icon)
 # see https://fontawesome.com/icons?d=gallery&p=2&s=brands
@@ -38,7 +32,6 @@ socials:
  
   LinkedIn: http://linkedin.com/in/diesh
  
-
 # build settings
 markdown: kramdown
 
