@@ -21,15 +21,12 @@ ul {
     padding-left: 0.5em;
   }
 
-  /* "alt" version: no bullets, divider lines between items */
   &.alt {
     list-style: none;
     padding-left: 0;
-
     li {
       border-top: solid 1px _palette(border);
       padding: 0.5em 0;
-
       &:first-child {
         border-top: 0;
         padding-top: 0;
@@ -37,118 +34,56 @@ ul {
     }
   }
 
-  /* "icons" version: horizontal inline icons with hover color */
   &.icons {
     cursor: default;
     list-style: none;
     padding-left: 0;
-
     li {
       display: inline-block;
       padding: 0 1em 0 0;
-
-      &:last-child {
-        padding-right: 0;
-      }
-
+      &:last-child { padding-right: 0; }
       a {
         color: _palette(bg-alt);
         transition: color 0.3s ease;
-        &:hover {
-          color: #000;
-        }
+        &:hover { color: #000; }
       }
     }
-
     @include breakpoint(small) {
-      li {
-        padding: 0 0.75em 0 0;
-      }
+      li { padding: 0 0.75em 0 0; }
     }
   }
 
-  /* "actions" version: button/action lists with modifiers
-     - .small    → compact spacing
-     - .vertical → stacked buttons
-     - .fit      → evenly distributed buttons in a table layout */
   &.actions {
     cursor: default;
     list-style: none;
     padding-left: 0;
-
     li {
       display: inline-block;
       padding: 0 (_size(element-margin) * 0.5) 0 0;
       vertical-align: middle;
-
-      &:last-child {
-        padding-right: 0;
-      }
+      &:last-child { padding-right: 0; }
     }
-
-    &.small li {
-      padding: 0 (_size(element-margin) * 0.5) 0 0;
-    }
-
+    &.small li { padding: 0 (_size(element-margin) * 0.5) 0 0; }
     &.vertical {
       li {
         display: block;
         padding: (_size(element-margin) * 0.5) 0 0 0;
-
-        &:first-child {
-          padding-top: 0;
-        }
-
-        > * {
-          margin-bottom: 0;
-        }
-      }
-
-      &.small li:first-child {
-        padding-top: 0;
-      }
-    }
-
-    &.fit {
-      display: table;
-      margin-left: (_size(element-margin) * -0.5);
-      padding: 0;
-      table-layout: fixed;
-      width: calc(100% + #{(_size(element-margin) * 0.5)});
-
-      li {
-        display: table-cell;
-        padding: 0 0 0 (_size(element-margin) * 0.5);
-
-        > * {
-          margin-bottom: 0;
-        }
-      }
-
-      &.small {
-        margin-left: (_size(element-margin) * -0.5);
-        width: calc(100% + #{(_size(element-margin) * 0.5)});
-        li {
-          padding: 0 0 0 (_size(element-margin) * 0.5);
-        }
+        &:first-child { padding-top: 0; }
+        > * { margin-bottom: 0; }
       }
     }
   }
 }
 
-
 /* ==========================================================================
    DEFINITION LISTS (dt/dd)
-   Highlight pairs on hover and style terms/definitions
    ========================================================================== */
 
-dt,
-dd {
+dt, dd {
   transition: background-color 1s ease;
   background-color: transparent;
 }
-.dt-dd-pair:hover dt,
-.dt-dd-pair:hover dd {
+.dt-dd-pair:hover dt, .dt-dd-pair:hover dd {
   background-color: rgba(0, 0, 0, 0.07);
 }
 dt {
@@ -169,7 +104,6 @@ dd b {
   color: #666;
   font-weight: 600;
   letter-spacing: 0.2px;
-
   &::after {
     content: "›";
     font-size: 1em;
@@ -178,145 +112,43 @@ dd b {
   }
 }
 
-
 /* ==========================================================================
-   FAQ / EXPANDABLE CARDS
-   Accordion-style Q&A blocks and timeline-card toggles
+   FAQ & EXPANDABLE LOGIC
    ========================================================================== */
 
-.faq-container {
-  margin-top: 3rem;
-  border-top: 1px solid #ddd;
-}
-.faq-container .faq-item:last-child {
-  border-bottom: none;
-}
-
-.faq-item {
-  border-bottom: 1px solid #ddd;
-  padding: 1rem 0;
-  cursor: pointer;
-}
-.faq-item .faq-answer {
-  cursor: default;
-}
-
-.faq-question,
-h3.faq-question {
+.faq-container { margin-top: 3rem; border-top: 1px solid #ddd; }
+.faq-item { border-bottom: 1px solid #ddd; padding: 1rem 0; cursor: pointer; }
+.faq-question {
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-weight: 600;
   font-size: 1.1rem;
   padding: 0.5rem 0;
-  cursor: pointer;
-  touch-action: manipulation;
-  -webkit-tap-highlight-color: transparent;
-  user-select: none;
 }
-
 .faq-icon {
   font-size: 1rem;
   margin-left: 0.25rem;
   transition: transform 0.3s ease;
-  transform-origin: center;
   display: inline-block;
 }
-.timeline-card .faq-icon {
-  position: absolute;
-  top: 1.25rem;
-  right: 1.25rem;
-  font-size: 0.8rem;
-  pointer-events: none;
-  color: var(--nav-color, #1B9C85);
-}
-
 .faq-answer {
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.4s ease;
   color: #555;
   font-size: 1rem;
-  padding-top: 0;
 }
-.faq-item.open .faq-answer,
-.timeline-card.open .faq-answer {
+.faq-item.open .faq-answer, .timeline-card.open .faq-answer {
   max-height: 2000px;
   padding-top: 0.5rem;
 }
-.faq-item.open .faq-icon,
-.timeline-card.open .faq-icon {
+.faq-item.open .faq-icon, .timeline-card.open .faq-icon {
   transform: rotate(45deg);
 }
-.faq-answer p,
-.faq-answer ol {
-  margin: 0 0 1rem;
-}
-
 
 /* ==========================================================================
-   BREADCRUMB & SECONDARY NAV
-   Footer navigation and secondary pages list
-   ========================================================================== */
-
-.breadcrumb {
-  display: inline-block;
-  margin-bottom: 0.1em;
-  font-size: 1em;
-  color: var(--nav-color, #1b9c85);
-  font-weight: 500;
-
-  a {
-    color: var(--nav-color, #1b9c85);
-    text-decoration: none;
-    font-weight: 500;
-    &:hover { text-decoration: underline; }
-  }
-  &::after {
-    content: "→";
-    margin-left: 0.22em;
-    font-size: 1em;
-    color: inherit;
-  }
-} 
-
-.footer-nav a {
- color: var(--nav-color, #1B9C85);
- &:hover { 
-    color: map-get($palette, 'highlight'); 
-    text-decoration: underline;
-  }
-
-}
-
-
-
-
-.secondary-pages {
-  margin-top: 1em;
-  padding-top: 1em;
-  font-size: 0.9em;
-  color: #555;
-}
-.secondary-pages h4 {
-  font-weight: 600;
-  font-size: 0.95em;
-  margin-bottom: 0.5em;
-  color: #333;
-}
-.secondary-pages ul {
-  padding: 0;
-  margin: 0;
-  list-style: none;
-}
-.secondary-pages li {
-  margin-bottom: 0.3em;
-}
-
-
-/* ==========================================================================
-   CONTENT / WORKSHOP CARDS
-   Card grid container + base card styles
+   TIMELINE & CONTENT CARDS
    ========================================================================== */
 
 .content-cards {
@@ -324,108 +156,40 @@ h3.faq-question {
   grid-template-columns: 1fr;
   gap: 1.25rem;
   margin: 2rem 0;
-  align-items: stretch;
 }
 @media (min-width: 768px) {
-  .content-cards {
-    grid-template-columns: 1fr 1fr;
-  }
+  .content-cards { grid-template-columns: 1fr 1fr; }
 }
-
-/* Base card style shared by content and timeline cards */
-/* Base content cards (e.g. workshops, posts) */
-.content-card:not(.timeline-card) {
-  background: #fff;
-  border: solid 1px var(--nav-color);
-  border-radius: 0;
-  padding: 1.25rem 1.5rem;
-  box-shadow: none;
-  transition: transform 0.2s cubic-bezier(.51, .19, .26, .98),
-    border-width 0.2s cubic-bezier(.51, .19, .26, .98);
-  cursor: hand;
-}
-
-/* Base timeline cards (kept fully separate to preserve circular badges) */
-.timeline-card,
-.timeline-card.victory {
-  background: #fff;
-  border: 1px solid rgba(27, 156, 133, 0.3);
-  border-radius: 0;
-  padding: 2rem 1.5rem 1.5rem 1.5rem; /* space for badge */
-  margin-bottom: 2.5rem;
-  transition: opacity 0.4s ease-in, transform 0.4s ease-in;
-  position: relative;
-}
-
-
-.timeline-card {
-  position: relative;
-  margin-bottom: 2rem;
-  padding: 1rem 1.25rem;
-}
-
-
-/* ==========================================================================
-   HOVER + OPEN STATES
-   Effects for cards, FAQ, and expandable elements
-   ========================================================================== */
-
-.content-card:hover,
-.timeline-card:hover {
-  transform: translateX(0px);
-  border-width: 3px;
-  box-shadow: none;
-}
-.content-card.open,
-.timeline-card.open,
-.faq-item.open,
-.expandable-card.open,
-.timeline-card.expanded {
-  transform: translateX(0px);
-  border-width: 3px !important;
-  box-shadow: none;
-}
-
-/* ==========================================================================
-   TIMELINE
-   Expandable timeline cards with numbered badges and trophy finale
-   ========================================================================== */
 
 .timeline {
   position: relative;
   margin: 3rem 0;
-  padding-left: 0;
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
 
-/* Base timeline card */
 .timeline-card {
   position: relative;
+  background: #fff;
+  border: 1px solid rgba(27, 156, 133, 0.3);
+  padding: 2rem 1.5rem 1.5rem 1.5rem;
+  margin-bottom: 2.5rem;
+  overflow: visible; 
   opacity: 0;
   transform: scale(0.95);
-  border: 1px solid rgba(27, 156, 133, 0.3);
-  background: #fff;
-  padding: 2rem 1.5rem 1.5rem 1.5rem; /* extra top padding for number badge */
-  margin-bottom: 2.5rem;
-  transition: opacity 0.4s ease-in, transform 0.4s ease-in; /* faster exit */
+  transition: opacity 0.4s ease-in, transform 0.4s ease-in;
 }
 
-/* Visible state */
 .timeline-card.visible {
   opacity: 1;
   transform: scale(1);
-  transition: opacity 1.2s ease-out, transform 1.2s ease-out; /* slower entry */
 }
 
-/* Hover + open */
-.timeline-card.open,
-.timeline-card:hover {
+.timeline-card:hover, .timeline-card.open {
   border-color: var(--nav-color);
 }
 
-/* Number badges */
+/* Timeline Numbers */
 .timeline-card::before {
   content: attr(data-step);
   position: absolute;
@@ -440,53 +204,42 @@ h3.faq-question {
   align-items: center;
   justify-content: center;
   color: #fff;
+  z-index: 10;
+  --badge-bg: var(--nav-color, #1B9C85);
 }
 
-/* Gradual saturation build for badges */
-.timeline-card[data-step="1"]::before { background: hsl(230, 40%, 90%); color: #111; }
-.timeline-card[data-step="2"]::before { background: hsl(230, 45%, 82%); color: #111; }
-.timeline-card[data-step="3"]::before { background: hsl(235, 55%, 75%); }
-.timeline-card[data-step="4"]::before { background: hsl(235, 60%, 68%); }
-.timeline-card[data-step="5"]::before { background: hsl(238, 65%, 62%); }
-.timeline-card[data-step="6"]::before { background: hsl(238, 70%, 56%); }
-.timeline-card[data-step="7"]::before { background: hsl(240, 75%, 50%); }
-.timeline-card[data-step="8"]::before { background: hsl(240, 80%, 45%); }
+/* Saturation Logic */
+.timeline-card[data-step="1"]::before { background-color: color-mix(in srgb, var(--badge-bg), white 85%); color: #111; }
+.timeline-card[data-step="2"]::before { background-color: color-mix(in srgb, var(--badge-bg), white 70%); color: #111; }
+.timeline-card[data-step="3"]::before { background-color: color-mix(in srgb, var(--badge-bg), white 55%); }
+.timeline-card[data-step="4"]::before { background-color: color-mix(in srgb, var(--badge-bg), white 40%); }
+.timeline-card[data-step="5"]::before { background-color: color-mix(in srgb, var(--badge-bg), white 25%); }
+.timeline-card[data-step="6"]::before { background-color: color-mix(in srgb, var(--badge-bg), white 10%); }
+.timeline-card[data-step="7"]::before { background-color: color-mix(in srgb, var(--badge-bg), white 5%); }
+.timeline-card[data-step="8"]::before { background-color: var(--badge-bg); }
 
-/* Content inside cards */
-.content-card h3 {
-  font-size: 1.1rem;
-  margin: 0 0 0.5rem 0;
-  font-weight: 600;
-  color: #222;
-}
-.content-card p {
-  font-size: 0.95rem;
-  line-height: 1.45;
-  color: #444;
-  margin: 0;
+/* The icon is absolute positioned in the card corner */
+.timeline-card .faq-icon {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  color: var(--nav-color, #1B9C85);
 }
 
 /* ==========================================================================
    VICTORY CARD
-   Special styling + trophy animation for finale
    ========================================================================== */
 
 .timeline-card.victory {
-  position: relative;
-  border-width: 2px !important;
-  border-radius: 0;
-  box-shadow: none;
-  margin-top: 3rem; /* space for crown */
+  margin-top: 3rem;
   padding: 2rem 2rem 1.5rem;
-  transform: translateX(4px); /* subtle nudge */
 }
 
-/* Trophy crown */
-.timeline-card.victory .fa {
+.timeline-card.victory .fa-trophy {
   position: absolute;
   top: -1.5em;
   left: 50%;
-  transform: translateX(-50%) scale(0); /* hidden at start */
+  transform: translateX(-50%) scale(0);
   width: 3em;
   height: 3em;
   background-color: gold;
@@ -500,19 +253,36 @@ h3.faq-question {
   opacity: 0;
 }
 
-/* Trophy pop animation */
-.timeline-card.victory.show-trophy .fa {
+.timeline-card.victory.show-trophy .fa-trophy {
   opacity: 1;
   animation: trophyPop 0.7s ease-out 0.3s forwards;
 }
 
 @keyframes trophyPop {
   0%   { transform: translateX(-50%) scale(0); }
-  40%  { transform: translateX(-50%) scale(2.5); } /* overshoot */
-  70%  { transform: translateX(-50%) scale(0.8); } /* undershoot */
-  100% { transform: translateX(-50%) scale(1); }   /* settle */
+  40%  { transform: translateX(-50%) scale(2.5); }
+  70%  { transform: translateX(-50%) scale(0.8); }
+  100% { transform: translateX(-50%) scale(1); }
 }
 
+/* ==========================================================================
+   WORKSHOP CARDS
+   ========================================================================== */
+
+.content-card.expandable-card:not(.timeline-card) {
+  position: relative;
+  cursor: pointer;
+  background: #fff;
+  border-top: 2px solid rgba(213, 137, 111, 0.6);
+  border-left: 2px solid rgba(213, 137, 111, 0.6);
+  border-right: 2px solid rgba(213, 137, 111, 0.6);
+  padding: 1.5rem 1.5rem 2.25rem;
+  transition: all 0.25s ease;
+}
+
+.content-card.expandable-card:not(.timeline-card):hover {
+  border-color: var(--nav-color);
+}
 
 
 /* ==========================================================================
@@ -571,261 +341,54 @@ h3.faq-question {
   }
 }
 
-/* ==========================================================================
-   WORKSHOP EXPANDABLE CARDS — ENHANCED AFFORDANCE
-   Scoped only to .content-card.expandable-card (not FAQ)
-   ========================================================================== */
-
-.content-card.expandable-card {
-  position: relative;
-  cursor: pointer;
-  background: #fff;
-  border: 2px solid rgba(213, 137, 111, 0.6);
-  border-radius: 0;
-  padding: 1.5rem 1.5rem 1.75rem;
-  transition:
-    transform 0.25s ease,
-    border-color 0.25s ease,
-    background-color 0.25s ease;
-  overflow: hidden;
-  will-change: transform, border-color, background-color;
-
-  /* subtle gradient underline cue */
-  &::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0%;
-    height: 3px;
-    background: linear-gradient(90deg, var(--nav-color), var(--brand-color, #8F6593));
-    transition: width 0.3s ease;
-  }
-
-  /* hover + active effects */
-  &:hover,
-  &:focus-visible {
-    background: rgba(213, 137, 111, 0.05);
-    border-color: var(--nav-color);
-    transform: translateY(-3px);
-  }
-
-  &:active {
-    transform: scale(0.98);
-    background: rgba(213, 137, 111, 0.08);
-  }
-
-  &:hover::after,
-  &:focus-visible::after,
-  &.open::after {
-    width: 100%;
-  }
-
-  /* open (expanded) state */
-  &.open {
-    background: #fffdfb;
-    border-color: var(--brand-color, #8F6593);
-    transform: translateY(0);
-  }
-}
-
-/* transition for the content reveal */
-.content-card.expandable-card .faq-answer {
-  transition: max-height 0.4s ease, opacity 0.35s ease;
-  opacity: 0;
-}
-.content-card.expandable-card.open .faq-answer {
-  opacity: 1;
-}
-
-/* Mobile feedback & spacing */
-@media (max-width: 768px) {
-  .content-card.expandable-card {
-    padding: 1.25rem 1.25rem 1.5rem;
-    border-width: 1.5px;
-    transition: background-color 0.2s ease, border-color 0.2s ease;
-    transform: none;
-  }
-
-  /* make tap feedback visible on mobile */
-  .content-card.expandable-card:active {
-    background: rgba(213, 137, 111, 0.08);
-    border-color: var(--brand-color, #8F6593);
-  }
-}
 
 /* ==========================================================================
-   WORKSHOP EXPANDABLE CARDS — SCOPED TO NON-TIMELINE .content-cards
-   Applies only to cards inside .content-cards, not inside .timeline
+   BREADCRUMB & SECONDARY NAV
+   Footer navigation and secondary pages list
    ========================================================================== */
 
-.content-cards > .content-card.expandable-card:not(.timeline-card) {
-  position: relative;
-  cursor: pointer;
-  background: #fff;
-  border-top: 2px solid rgba(213, 137, 111, 0.6);
-  border-left: 2px solid rgba(213, 137, 111, 0.6);
-  border-right: 2px solid rgba(213, 137, 111, 0.6);
-  border-bottom: none;
-  border-radius: 0;
-  padding: 1.5rem 1.5rem 2.25rem;
-  transition: all 0.25s ease;
-  overflow: visible;
-  will-change: transform, border-color, background-color;
-}
+.breadcrumb {
+  padding: 0;
+  margin: 0;
+  font-size: 0.9em;
+  color: #666;
 
-/* Hover + motion */
-.content-cards > .content-card.expandable-card:not(.timeline-card):hover {
-  background: rgba(213, 137, 111, 0.04);
-  border-color: var(--nav-color);
-  transform: translateY(-2px);
-}
-.content-cards > .content-card.expandable-card:not(.timeline-card):active {
-  transform: scale(0.995);
-}
+  ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: block;
+  }
 
-/* Open state — keep same border as hover */
-.content-cards > .content-card.expandable-card:not(.timeline-card).open {
-  background: #fffdfb;
-  border-color: var(--nav-color);
-  transform: translateY(0);
-}
+  li {
+    display: block;
 
-/* Animated underline (acts as bottom border) */
-.content-cards > .content-card.expandable-card:not(.timeline-card)::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0%;
-  height: 2px;
-  background: var(--nav-color);
-  transition: width 0.35s ease;
-}
+    a {
+      text-decoration: none;
 
-/* Chevron indicator — larger, centered */
-.content-cards > .content-card.expandable-card:not(.timeline-card)::before {
-  content: "▾";
-  position: absolute;
-  bottom: 0.25rem;
-  left: 50%;
-  transform: translateX(-50%) translateY(6px);
-  font-size: 1.3rem;
-  color: var(--nav-color);
-  opacity: 0;
-  transition: opacity 0.35s ease, transform 0.35s ease;
-}
-
-/* Hover: animate underline + chevron */
-.content-cards > .content-card.expandable-card:not(.timeline-card):hover::after {
-  width: 100%;
-}
-.content-cards > .content-card.expandable-card:not(.timeline-card):hover::before {
-  opacity: 1;
-  transform: translateX(-50%) translateY(0);
-}
-
-/* Open: underline stays visible + chevron rotates up */
-.content-cards > .content-card.expandable-card:not(.timeline-card).open::after {
-  width: 100%;
-}
-.content-cards > .content-card.expandable-card:not(.timeline-card).open::before {
-  content: "▴";
-  opacity: 1;
-  transform: translateX(-50%) translateY(0);
-}
-
-/* Fade preview text */
-.content-cards > .content-card.expandable-card:not(.timeline-card) .faq-answer {
-  position: relative;
-  display: block;
-  max-height: 4.5rem;
-  overflow: hidden;
-  opacity: 1;
-  transition: max-height 0.45s ease, opacity 0.35s ease, margin-top 0.3s ease;
-  margin-top: 1rem;
-}
-
-/* Subtle fade hint */
-.content-cards > .content-card.expandable-card:not(.timeline-card) .faq-answer::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 2.2rem;
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #fff 90%);
-  pointer-events: none;
-  transition: opacity 0.3s ease;
-  z-index: 2;
-}
-
-/* Expanded (open) state */
-.content-cards > .content-card.expandable-card:not(.timeline-card).open .faq-answer {
-  max-height: 2000px;
-  opacity: 1;
-  margin-top: 1rem;
-}
-.content-cards > .content-card.expandable-card:not(.timeline-card).open .faq-answer::after {
-  opacity: 0;
-}
-
-/* Mobile tweaks */
-@media (max-width: 768px) {
-  .content-cards > .content-card.expandable-card:not(.timeline-card) {
-    -webkit-transform: translateZ(0);
-    overflow: visible;
-    padding: 1.25rem 1.25rem 2rem;
-    border-width: 1.5px;
-    transform: none;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
   }
 }
-
-
-/* ==========================================================================
-   FIX: Restore timeline number badges but remove workshop chevron underline
-   ========================================================================== */
-
-.timeline .timeline-card.expandable-card {
-  /* restore proper timeline card layout */
-  border: 1px solid rgba(27, 156, 133, 0.3) !important;
-  background: #fff !important;
-  border-radius: 0 !important;
-  padding: 2rem 1.5rem 1.5rem 1.5rem !important;
-  overflow: visible !important;
-  transform: none !important;
-  transition: opacity 0.4s ease-in, transform 0.4s ease-in !important;
+.secondary-pages {
+  margin-top: 1em;
+  padding-top: 1em;
+  font-size: 0.9em;
+  color: #555;
 }
-
-/* Keep the number badges (::before) intact — only neutralize extra decorations */
-.timeline .timeline-card.expandable-card::after {
-  content: none !important; /* removes underline animation */
+.secondary-pages h4 {
+  font-weight: 600;
+  font-size: 0.95em;
+  margin-bottom: 0.5em;
+  color: #333;
 }
-
-/* Keep the number badge (::before) — don't remove content */
-.timeline .timeline-card.expandable-card::before {
-  all: unset;
-  content: attr(data-step);
-  position: absolute;
-  top: -1rem;
-  left: -1rem;
-  width: 3rem;
-  height: 3rem;
-  border-radius: 50%;
-  font-weight: 700;
-  font-size: 1.2rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
+.secondary-pages ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
 }
-
-/* restore color gradient progression for badges */
-.timeline .timeline-card[data-step="1"]::before { background: hsl(230, 40%, 90%); color: #111; }
-.timeline .timeline-card[data-step="2"]::before { background: hsl(230, 45%, 82%); color: #111; }
-.timeline .timeline-card[data-step="3"]::before { background: hsl(235, 55%, 75%); }
-.timeline .timeline-card[data-step="4"]::before { background: hsl(235, 60%, 68%); }
-.timeline .timeline-card[data-step="5"]::before { background: hsl(238, 65%, 62%); }
-.timeline .timeline-card[data-step="6"]::before { background: hsl(238, 70%, 56%); }
-.timeline .timeline-card[data-step="7"]::before { background: hsl(240, 75%, 50%); }
-.timeline .timeline-card[data-step="8"]::before { background: hsl(240, 80%, 45%); }
+.secondary-pages li {
+  margin-bottom: 0.3em;
+}

@@ -90,11 +90,11 @@ a {
   color: $link-color;
   text-decoration: none;
   &:hover { 
-    color: map-get($palette, 'highlight'); 
-    text-decoration: none;
+    color: map-get($palette, 'nav-color'); 
+    text-decoration: underline;
   }
-
 }
+
 
 a.button, a.button:hover {
   text-decoration: none !important;

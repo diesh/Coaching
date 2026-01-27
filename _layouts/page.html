@@ -2,17 +2,17 @@
 <html lang="en">
   {% include head.html %}
 
-  <body style="--brand-color: {{ page.brand_color }}; --nav-color: {{ page.nav-color | default: '#1B9C85' }};">
+  <body class="redesign-vibe" style="--brand-color: {{ page.brand_color }}; --nav-color: {{ page.nav-color | default: '#1B9C85' }};">
 
     {% include header.html %}
 
     <main id="main" class="{{ page.main_class | default: '' }}">
-      {{ content }}
+      <div class="content-wrapper-airy">
+        {{ content }}
+      </div>
     </main>
 
     {% include footer.html %}
-    
-
 
   </body>
 </html>
