@@ -238,13 +238,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 // ----------------------------------------------
-// TESTIMONIALS FADE-IN LOGIC 
+// TESTIMONIALS FADE-IN LOGIC (FIXED)
 // ----------------------------------------------
 
-
 function getTestimonialsPath() {
-  const parts = window.location.pathname.split("/").filter(Boolean);
-  return `/${parts[0]}/assets/js/testimonials.json`;
+  // Always fetch from the site root
+  return "/assets/js/testimonials.json";
 }
 
 function fadeAndLoad(container, testimonials) {
@@ -279,6 +278,7 @@ function fadeAndLoad(container, testimonials) {
 
   container.innerHTML = blocks.join("");
 
+  // Fade-in effect
   setTimeout(() => {
     container.querySelectorAll(".fade-in-box").forEach((b) => b.classList.remove("fade-in-box"));
   }, 900);
@@ -305,16 +305,20 @@ function fadeAndLoad(container, testimonials) {
 }
 
 function initTestimonials() {
-  const containers = document.querySelectorAll("#testimonial-box");
+  const containers = document.querySelectorAll("#testimonial-box, #testimonial-box-coaching, .testimonials-wrapper");
   if (!containers.length) return;
 
   fetch(getTestimonialsPath())
-    .then((res) => res.json())
+    .then((res) => {
+      if (!res.ok) throw new Error("Testimonials JSON not found");
+      return res.json();
+    })
     .then((data) => {
       const testimonials = data.testimonials;
       if (!testimonials?.length) return;
       containers.forEach((c) => fadeAndLoad(c, testimonials));
-    });
+    })
+    .catch((err) => console.warn("⚠️ Testimonials not loaded:", err.message));
 }
 
 window.addEventListener("load", () => {
@@ -322,5 +326,116 @@ window.addEventListener("load", () => {
 });
 
 
+
+// share blog posts//
+document.addEventListener('DOMContentLoaded', function() {
+  // Get elements by ID (single widget only)
+  var shareBtn = document.getElementById('share-btn');
+  var shareModal = document.getElementById('share-modal');
+  var copyBtn = document.getElementById('copy-link-btn');
+  var copySuccess = document.getElementById('copy-success');
+  var linkedinShare = document.getElementById('linkedin-share');
+
+  // Always hide modal on load
+  if (shareModal) shareModal.hidden = true;
+
+  // Toggle modal on shareBtn click
+  shareBtn.addEventListener('click', function(e) {
+    e.stopPropagation();
+    shareModal.hidden = !shareModal.hidden;
+    if (!shareModal.hidden) {
+      // Set LinkedIn share link with current URL
+      linkedinShare.href = 'https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(window.location.href);
+    }
+  });
+
+  // Copy Link functionality
+  copyBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+    navigator.clipboard.writeText(window.location.href).then(function() {
+      copySuccess.hidden = false;
+      setTimeout(function() {
+        copySuccess.hidden = true;
+      }, 1200);
+    });
+  });
+
+  // Click outside closes modal
+  document.addEventListener('mousedown', function(e) {
+    if (!shareModal.hidden && !shareModal.contains(e.target) && !shareBtn.contains(e.target)) {
+      shareModal.hidden = true;
+    }
+  });
+
+  // ESC key closes modal
+  document.addEventListener('keydown', function(e) {
+    if (!shareModal.hidden && e.key === "Escape") {
+      shareModal.hidden = true;
+    }
+  });
+
+  // Prevent modal from staying open if you refresh after clicking share
+  window.addEventListener('pageshow', function() {
+    if (shareModal) shareModal.hidden = true;
+  });
+});
+
+
+// ----------------------------------------------
+//  COACHING MODAL AUTO-POP BASED ON URL PARAM
+// ----------------------------------------------
+
+
+document.addEventListener('DOMContentLoaded', function() {
+  const urlParams = new URLSearchParams(window.location.search);
+
+  if (urlParams.has('portfolio')) {
+    // Jekyll injects the values from your MD file directly here
+    const altTitle = "{{ page.portfolio_hero_title }}";
+    const altTagline = "{{ page.portfolio_hero_tagline }}";
+
+    // We find the elements by their existing classes in home.html
+    const titleEl = document.querySelector('.hero-display');
+    const taglineEl = document.querySelector('.hero-tagline');
+
+    if (titleEl && altTitle) {
+      titleEl.innerText = altTitle;
+    }
+    
+    if (taglineEl && altTagline) {
+      // Use innerHTML in case you use <strong> tags in your MD tagline
+      taglineEl.innerHTML = altTagline;
+    }
+  }
+
+
+
+ if (urlParams.has('portfolio')) {
+    const container = document.querySelector('#banner .content');
+
+    if (container) {
+      const backLink = document.createElement('a');
+      backLink.href = "https://portfolio.diesh.ca"; 
+      backLink.className = "masthead_link-secondary fade-in-delayed";
+      
+      backLink.innerHTML = `
+        <span>Go back to portfolio</span>
+        <span class="arrow">
+          <svg width="12" height="12" viewBox="0 0 12 12">
+            <path d="M3 6h7M7 3l3 3-3 3" stroke-width="1.5" />
+          </svg>
+        </span>
+      `;
+      
+      container.appendChild(backLink);
+
+      // Trigger the fade-in after the primary button has landed
+      // 1500ms allows the main banner animation (~1s) to finish first
+      setTimeout(() => {
+        backLink.classList.add('is-visible');
+      }, 1500); 
+    }
+  }
+});
 
 
