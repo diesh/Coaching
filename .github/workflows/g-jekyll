@@ -3,7 +3,7 @@ name: Build and Deploy Jekyll site
 on:
   push:
     branches:
-      - master
+      - master   # or main, depending on your live branch
 
 permissions:
   contents: write
@@ -11,13 +11,11 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Setup Ruby
-        uses: ruby/setup-ruby@v1
+      - uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.1'
           bundler-cache: true
@@ -31,9 +29,9 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          personal_token: ${{ secrets.PAGES_DEPLOY_TOKEN }}
+          external_repository: diesh/Coaching
           publish_branch: gh-pages
           publish_dir: ./_site
-          force_orphan: false   # ✅ keep history so CDN sees file changes
-          commit_message: "Deploy site at $(date +'%Y-%m-%d %H:%M:%S')"
-          enable_jekyll: false  # ✅ ensure assets aren’t ignored
+          user_name: diesh
+          user_email: gagan@designstamp.com
