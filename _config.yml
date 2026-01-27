@@ -55,6 +55,7 @@ permalink: /:categories/:year/:month/:day/:title.html
 
 plugins:
   - jekyll-seo-tag
+  - jekyll-redirect-from
 
 theme: null
 
