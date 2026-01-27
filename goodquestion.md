@@ -9,6 +9,9 @@ nav-color: "#8d82c4"
 is_special: true
 weight: 50
 permalink: /goodquestion/
+redirect_from:
+  - /goodquestion
+  - /goodquestion.html
 nav_active: goodquestion
 ---
 <!-- <style>
