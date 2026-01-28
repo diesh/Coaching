@@ -12,8 +12,8 @@ permalink: /goodquestion/
 redirect_from:
   - /goodquestion.html
 nav_active: goodquestion
-
 ---
+
 <!-- <style>
 
 a.post-title:link,
