@@ -20,10 +20,12 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.1'
-          bundler-cache: true
+          bundler-cache: false # 🛑 Set to false to bypass GitHub's broken cache service
 
       - name: Install dependencies
-        run: bundle install
+        run: |
+          bundle config set --local path 'vendor/bundle'
+          bundle install
 
       - name: Build the site
         run: bundle exec jekyll build
@@ -34,6 +36,7 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
           publish_dir: ./_site
-          force_orphan: false   # ✅ keep history so CDN sees file changes
-          commit_message: "Deploy site at $(date +'%Y-%m-%d %H:%M:%S')"
-          enable_jekyll: false  # ✅ ensure assets aren’t ignored
+          force_orphan: false
+          keep_files: false    # 🧹 Ensures old files don't conflict with new redirects
+          commit_message: "Deploy site with redirect fix $(date +'%Y-%m-%d %H:%M:%S')"
+          enable_jekyll: false
