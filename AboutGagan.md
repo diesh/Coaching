@@ -49,7 +49,7 @@ main_class: alt
       <h3>What I Do Today</h3>
       <p>Today, I coach tech professionals and leaders, facilitate strategy workshops, and help people navigate big decisions and moments of change. I specialise in helping people see their strengths clearly, and use them more intentionally.</p>
 
-      <p>I live in Toronto, Canada 🇨🇦, and work with clients across North America and Europe.</p>
+      <p>I live in Toronto, Canada 🇨🇦, and have worked with clients across North America and Europe.</p>
 
       <div class="cta-links">
         <p>
