@@ -3,63 +3,61 @@
    Fonts: Inter (body), Playfair Display (hero headline)
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap');
 @import "../libs/vars";
 
-/* Base setup */
+/* Base Setup */
 html {
   font-size: 100%;
   -webkit-text-size-adjust: 100%;
   text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
 }
 
 body {
-  font-family: map-get($font, 'family');
-  color: map-get($palette, 'fg');
+  font-family: 'Inter', sans-serif;
+  color: _palette(fg);
+  background-color: _palette(bg);
   font-size: 1.05rem;
-  font-weight: map-get($font, 'weight');
-  line-height: 1.65;
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: -0.01em;
 }
 
-/* Responsive font scaling */
-@include breakpoint(xlarge) { body { font-size: 1.08rem; } }
-@include breakpoint(xxsmall) { body { font-size: 1.15rem; } }
-
-/* Headings – Refined Hierarchy */
+/* Headings — High Contrast & Flat */
 h1, h2, h3, h4, h5, h6 {
-  font-family: map-get($font, 'family');
-  line-height: 1.3;
-  margin: 0 0 1em 0;
+  font-family: 'Inter', sans-serif;
+  color: _palette(fg-bold);
+  font-weight: 900;
+  line-height: 1.1;
+  margin: 0 0 1.5rem 0;
+  letter-spacing: -0.04em;
 }
 
 h1 {
-  font-size: 2.2rem;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  color: map-get($palette, 'fg-bold');
+  font-size: 3.5rem;
+  @include breakpoint(small) { font-size: 2.5rem; }
 }
 
 h2 {
-  font-size: 1.5rem;
-  font-weight: 600;
-  letter-spacing: -0.015em;
-  color: map-get($palette, 'fg');
+  font-size: 2rem;
+  font-weight: 800;
+  border-bottom: 1px solid _palette(border);
+  padding-bottom: 0.5rem;
 }
 
 h3 {
-   font-size: 1.25rem;
-  font-weight: 500;
-  color: map-get($palette, 'fg');
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: _palette(fg-bold);
 }
 
-
 h4 {
-  font-size: 1.2rem;
-  font-weight: 500;
-  color: map-get($palette, 'fg-light');
+  font-size: 0.85rem;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.15em;
+  color: _palette(brand-color);
 }
 
 h5, h6 {
@@ -104,31 +102,71 @@ a.button, a.button:hover {
    CALLOUTS (Modernized)
    ------------------------------------------------- */
 
+/* -------------------------------------------------
+   CALLOUTS — Flat Inline Style
+   ------------------------------------------------- */
 .callout {
   position: relative;
-  max-width: 48rem; /* keeps content from feeling too wide */
-  padding: 1.25em 1.5em 1.25em 3.25em;
-  margin: 2em;
-  border-left: 4px solid (map-get($palette, 'spicy'));
-  background: color-mix(in srgb, var(--nav-color, #{map-get($palette, 'spicy')}) 6%, white);
-  font-size: 1rem;
-  line-height: 1.6;
-  border-radius: 0;
-  box-shadow: none;
+  
+  max-width: 700px; 
+  margin: 3rem 0;
+  padding: 3rem;
+  background: none;
+  font-size: 0.9rem;
+  border: none;
+  margin: 0;
+    margin-bottom: 1rem;
+    text-align: left;
+    
+    color: _palette(fg-bold);           // Slightly darker than standard body text
+                  // Slightly smaller for a "meta" note feel
+    line-height: 1.5;                   // Tighter than the body's 1.65 for a compact look
+    letter-spacing: _font(letter-spacing-alt);
+    border: 1px solid rgba(_palette(spicy), 0.2); // Light border using accent color
+
+  // Top-Left L
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 24px;
+    height: 24px;
+    border-top: 8px solid _palette(spicy);
+    border-left: 8px solid _palette(spicy);
+  }
+
+  // Bottom-Right L
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 24px;
+    height: 24px;
+    border-bottom: 8px solid _palette(spicy);
+    border-right: 8px solid _palette(spicy);
+  }
 
   .fa {
-    position: absolute;
-    top: 1.25em;
-    left: -.8em;
-    width: 1.5em;
-    height: 1.5em;
-    background: (map-get($palette, 'spicy'));
-    color: #fff;
-    font-size: 2em;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: block;
+    font-size: 1.5rem;
+    color: _palette(spicy);
+    margin-bottom: 1rem;
+    text-align: left;
+  }
+
+
+
+
+  code {
+    
+    color: _palette(spicy);                 // Use the accent color for the text itself
+    padding: 0.2rem 0.4rem;
+    font-family: _font(family-fixed);       // Use your JetBrains Mono variable
+    font-size: 0.85em;
+    border-radius: 3px;                     // Keep it very slight to match the 5px L-corners
+    border: 1px solid rgba(_palette(spicy), 0.2);
   }
 
   h4, h5, strong {

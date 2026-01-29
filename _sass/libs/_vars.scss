@@ -25,7 +25,7 @@ $font: (
   weight: 400,
   weight-bold: 700,
   letter-spacing: 0em,
-  letter-spacing-alt: 0.05em
+  letter-spacing-alt: 0.02em
 );
 
 // Grid.
@@ -61,13 +61,12 @@ $font-family-heading: map-get(map-get($config, 'fonts'), 'heading');
 // Palette: flat, modern, no flourish
 $palette: (
   brand-color: #1B9C85,
-  nav-color: #111,
-  bg: #ffffff,
-  bg-alt: #fafafa,
-  fg: #222,
-  fg-bold: #111,
-  fg-light: rgba(0, 0, 0, 0.5),
-  border: rgba(0, 0, 0, 0.1),
+  nav-color:   #111111,
+  bg:          #ffffff,
+  bg-alt:      #f9f9f9, 
+  fg:          #242424,
+  fg-bold:     #000000,
+  border:      #e5e5e5, 
   border-bg: rgba(0, 0, 0, 0.02),
   highlight: $highlight-color,
   muted: #64748b,
