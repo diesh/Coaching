@@ -61,6 +61,7 @@ $font-family-heading: map-get(map-get($config, 'fonts'), 'heading');
 
 // Palette: flat, modern, no flourish
 $palette: (
+  logo: #383C51,
   brand-color: #1B9C85,
   nav-color:   #111111,
   bg:          #ffffff,

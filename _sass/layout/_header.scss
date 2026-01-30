@@ -24,3 +24,136 @@
   }
 }
 
+
+/* --------------------------------------------------
+   Header & Global Offsets
+-------------------------------------------------- */
+#wrapper,
+#main,
+.brandimage_masthead {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+}
+
+#header {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: var(--header-h);
+  background: #fff;
+  z-index: 999;
+}
+
+#header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent 20%,
+    var(--nav-color) 50%,
+    transparent 80%
+  );
+}
+#header .inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 0 0.75rem;
+}
+
+// logo styles
+#header {
+  a.logo {
+    display: flex;
+    align-items: center;
+    font-weight: 700; 
+    font-size: 0.9rem;
+    color: var(--logo) !important;
+    text-decoration: none;
+
+    white-space: nowrap;
+    flex-shrink: 0;
+    width: 350px;
+    
+    @media (max-width: 736px) {
+      width: 300px;
+    }
+    
+    strong {
+      width: 115px;
+      flex-shrink: 0;
+      display: inline-block;
+    }
+
+    span {
+      margin-left: 0.5rem; 
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      color: var(--brand-color); 
+      position: relative;
+      width: 210px;
+      flex-shrink: 0;
+      display: inline-block;
+
+      
+      opacity: 0;
+      animation: logoFadeIn 0.9s ease forwards;
+      animation-delay: 0.1s; // Brief delay to let layout settle
+
+      @media (max-width: 736px) {
+        margin-left: 0;
+        width: 185px;
+      }
+
+      
+    }
+
+    &:hover span {
+      color: var(--spicy);
+      
+      &::after {
+        transform: scaleX(1);
+        transform-origin: left;
+      }
+    }
+  }
+}
+
+// Keyframes for the fade-in effect
+@keyframes logoFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.brandimage_masthead img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  object-position: top center;
+  max-height: 40vh;
+
+  @include breakpoint('xlarge') { max-height: 32vh; }
+  @include breakpoint('large')  { max-height: 30vh; }
+}
+
+.inner,
+section {
+  margin-bottom: 3rem; // or 2.5rem, whatever fits your vertical rhythm
+}
+
+/* --------------------------------------------------
+   Force consistent header height at xlarge breakpoint
+-------------------------------------------------- */
+@include breakpoint(xlarge) {
+  #header,
+  #header .inner {
+    height: var(--header-h) !important;
+  }
+}

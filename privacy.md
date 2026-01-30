@@ -14,7 +14,7 @@ main_class: coaching
 
 
 <section id="one" class="no-banner">
-
+<br><br>
 <h1>Privacy Policy</h1>
 
 <h2>Privacy has never been more important (<element style="color: red;">or threatened</element>). We respect&nbsp;yours.</h2> 

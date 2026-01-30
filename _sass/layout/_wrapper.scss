@@ -52,3 +52,47 @@ margin: 0;
 
 
 
+
+/* --------------------------------------------------
+   Content Widths & Padding
+-------------------------------------------------- */
+@include breakpoint(large) {
+  #wrapper,
+  #main,
+  #contact,
+  #footer {
+    max-width: var(--content-w);
+    margin: 0 auto;
+    padding: 0 0.75rem;
+  }
+}
+@include breakpoint(xxlarge) {
+  #wrapper,
+  #main,
+  #contact,
+  #footer {
+    max-width: 1540px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+}
+@include breakpoint(xlarge) {
+  #wrapper,
+  #main,
+  #contact,
+  #footer {
+    max-width: 90%; 
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+}
+
+#main .inner {
+  padding: 2rem 1rem;
+  width: 100%;
+  max-width: none;
+
+  @include breakpoint(medium) { padding: 0; }
+  @include breakpoint(small)  { padding: 0; }
+  @include breakpoint(xsmall) { padding: 0; }
+}

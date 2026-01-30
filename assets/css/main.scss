@@ -1,10 +1,7 @@
 ---
 ---
 
-/* PATCH: header height CSS variable and sticky-anchor offset */
-:root {
-  --header-h: 72px;
-}
+
 html {
   scroll-padding-top: calc(var(--header-h) + 12px);
 }
@@ -14,6 +11,52 @@ html {
 @import "libs/functions";
 @import "libs/mixins";
 @import "libs/skel";
+
+/* --------------------------------------------------
+   CSS Variables (Mapped from $palette)
+-------------------------------------------------- */
+:root {
+  /* Header & Layout Constants */
+  --header-h: 72px;
+  --content-w: 1100px;
+
+  /* Brand & Navigation */
+  --logo:      #{map-get($palette, 'logo')};
+  --brand-color: #{map-get($palette, 'brand-color')};
+  --nav-color:   #{map-get($palette, 'nav-color')};
+  --spicy:       #{map-get($palette, 'spicy')};
+
+  /* Typography & Surface */
+  --bg:          #{map-get($palette, 'bg')};
+  --bg-alt:      #{map-get($palette, 'bg-alt')};
+  --fg:          #{map-get($palette, 'fg')};
+  --fg-bold:     #{map-get($palette, 'fg-bold')};
+  --muted:       #{map-get($palette, 'muted')};
+  
+  /* Borders & Highlights */
+  --border:      #{map-get($palette, 'border')};
+  --border-bg:   #{map-get($palette, 'border-bg')};
+  --highlight:   #{map-get($palette, 'highlight')};
+
+  /* Primary Accents */
+  --accent1:     #{map-get($palette, 'accent1')};
+  --accent2:     #{map-get($palette, 'accent2')};
+  --accent3:     #{map-get($palette, 'accent3')};
+  --accent4:     #{map-get($palette, 'accent4')};
+  --accent5:     #{map-get($palette, 'accent5')};
+
+  /* Subtle Accents (Pastels/Backgrounds) */
+  --subtle-accent1: #{map-get($palette, 'subtle_accent1')};
+  --subtle-accent2: #{map-get($palette, 'subtle_accent2')};
+  --subtle-accent3: #{map-get($palette, 'subtle_accent3')};
+  --subtle-accent4: #{map-get($palette, 'subtle_accent4')};
+  --subtle-accent5: #{map-get($palette, 'subtle_accent5')};
+  --subtle-accent6: #{map-get($palette, 'subtle_accent6')};
+
+  /* Font Fallbacks */
+  --font-family-base: #{$font-family-base};
+  --font-family-heading: #{$font-family-heading};
+}
 
 // 2. External resources
 @import "font-awesome.min.css";
@@ -80,163 +123,4 @@ html {
 @import "layout/menu";
 
 
-/* --------------------------------------------------
-   CSS Variables
--------------------------------------------------- */
-:root {
-  --header-h:   72px;
-  --content-w:  1100px;
-  --brand-color: #{$brand-color};
-  --nav-color: #{$nav-color};
-  --link-color: #{$link-color};
-  --text-color: #{$text-color};
-  --background-color: #{$background-color};
-  --heading-color: #{$heading-color};
-  --accent1: #{$accent1};
-  --accent2: #{$accent2};
-  --accent3: #{$accent3};
 
-  --font-family-base: #{$font-family-base};
-  --font-family-heading: #{$font-family-heading};
-}
-
-/* --------------------------------------------------
-   Header & Global Offsets
--------------------------------------------------- */
-#wrapper,
-#main,
-.brandimage_masthead {
-  padding-top: 0 !important;
-  margin-top: 0 !important;
-}
-
-#header {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: var(--header-h);
-  background: #fff;
-  z-index: 999;
-}
-
-#header::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 1px;
-  background: linear-gradient(
-    to right,
-    transparent 20%,
-    var(--nav-color) 50%,
-    transparent 80%
-  );
-}
-#header .inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 100%;
-  max-width: 1500px;
-  margin: 0 auto;
-  padding: 0 0.75rem;
-}
-// logo styles
-#header {
-  .logo {
-    display: flex;
-    align-items: center;
-    font-weight: map-get($font, 'weight-bold'); 
-    font-size: 0.9rem;
-    color: var(--brand-color); 
-    text-decoration: none;
-
-
-    span {
-      margin-left: .5rem;
-      font-size: 0.9rem;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: .08em;
-      color: inherit; // This forces the span to follow the logo's color
-    }
-
-    &:hover {
-      color: var(--nav-color); // Uses #1B9C85 from your palette
-      
-      span {
-        color: var(--nav-color);
-      }
-    }
-  }
-}
-
-.brandimage_masthead img {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-  object-position: top center;
-  max-height: 40vh;
-
-  @include breakpoint('xlarge') { max-height: 32vh; }
-  @include breakpoint('large')  { max-height: 30vh; }
-}
-
-.inner,
-section {
-  margin-bottom: 3rem; // or 2.5rem, whatever fits your vertical rhythm
-}
-
-/* --------------------------------------------------
-   Force consistent header height at xlarge breakpoint
--------------------------------------------------- */
-@include breakpoint(xlarge) {
-  #header,
-  #header .inner {
-    height: var(--header-h) !important;
-  }
-}
-
-/* --------------------------------------------------
-   Content Widths & Padding
--------------------------------------------------- */
-@include breakpoint(large) {
-  #wrapper,
-  #main,
-  #contact,
-  #footer {
-    max-width: var(--content-w);
-    margin: 0 auto;
-    padding: 0 0.75rem;
-  }
-}
-@include breakpoint(xxlarge) {
-  #wrapper,
-  #main,
-  #contact,
-  #footer {
-    max-width: 1540px;
-    margin: 0 auto;
-    padding: 0 1rem;
-  }
-}
-@include breakpoint(xlarge) {
-  #wrapper,
-  #main,
-  #contact,
-  #footer {
-    max-width: 90%; 
-    margin: 0 auto;
-    padding: 0 1rem;
-  }
-}
-
-#main .inner {
-  padding: 2rem 1rem;
-  width: 100%;
-  max-width: none;
-
-  @include breakpoint(medium) { padding: 0; }
-  @include breakpoint(small)  { padding: 0; }
-  @include breakpoint(xsmall) { padding: 0; }
-}
