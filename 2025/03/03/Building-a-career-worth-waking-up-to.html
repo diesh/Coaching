@@ -12,16 +12,43 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 
-  <!-- Google Fonts CSS preloads -->
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"></noscript>
+  <!-- Critical inline font loading - blocks render but prevents jitter -->
+  <style>
+    @font-face {
+      font-family: 'Inter';
+      font-style: normal;
+      font-weight: 400;
+      font-display: block;
+      src: url('https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7W0Q5nw.woff2') format('woff2');
+    }
+    @font-face {
+      font-family: 'Inter';
+      font-style: normal;
+      font-weight: 600;
+      font-display: block;
+      src: url('https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2ZL7W0Q5nw.woff2') format('woff2');
+    }
+    @font-face {
+      font-family: 'Inter';
+      font-style: normal;
+      font-weight: 700;
+      font-display: block;
+      src: url('https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2pL7W0Q5nw.woff2') format('woff2');
+    }
+  </style>
 
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&display=swap"></noscript>
+  <!-- Remove the async preloads since we're loading inline now -->
 
-  <!-- Direct font file preloads -->
-  <link rel="preload" href="https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7W0Q5nw.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="https://fonts.gstatic.com/s/playfairdisplay/v40/nuFiD-vYSZviVYUb_rj3ij__anPXDTzYgEM86xQ.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+  /* 1. Force the font to load immediately */
+  @font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400 700;
+    font-display: block; /* Prevents invisible text during load */
+    src: url('/assets/fonts/inter-var.woff2') format('woff2');
+  }
+</style>
 
   <!-- CSS Paths -->
   <link rel="stylesheet" href="/assets/css/main.css" />
@@ -34,6 +61,7 @@
 
   <!-- Favicon -->
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
 
   <!-- Scripts -->
   <script src="/assets/js/jquery.min.js"></script>
@@ -70,14 +98,12 @@
   <meta name="twitter:image" content="">
 </head>
 
-
-
   <body class="post-page" style="--brand-color: ; --nav-color: #8d82c4;">
     <header id="header">
   <div class="inner">
    <a href="/" class="logo">
       <strong>GAGAN DIESH</strong>
-      <span>Executive Coaching</span>
+      <span>CAREER & LEADERSHIP COACHING</span>
     </a>
 
     <input type="checkbox" id="menu-btn" class="menu-btn" />
@@ -120,7 +146,6 @@
 
   </div>
 </header>
-
 
     <main id="main" class="">
       <div class="spacer" aria-hidden="true"></div>
@@ -587,7 +612,7 @@ I suggest: <strong>Move fast, try things. But never break people. Nothing is mor
           | Coaching by Gagan Diesh
         </li>
         <li><a href="https://diesh.substack.com/" target="_blank">Signup for my newsletter</a></li>
-        <li><a href="/privacy" target="_blank">Privacy policy</a></li>
+        <li><a href="/privacy">Privacy policy</a></li>
         <li>I use a mix of Canadian and American spelling. I realize this is my favourite mistake 🤷🏽‍♂️.</li>
         <li>
           Short on $ and out of work? If you need help,
