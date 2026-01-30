@@ -141,25 +141,34 @@ html {
   margin: 0 auto;
   padding: 0 0.75rem;
 }
-
 // logo styles
-#header .logo {
-  display: flex;
-  align-items: center;
-  font-weight: 700;
-  font-size: 0.9rem;
-  color: #111;
-  text-decoration: none;
-}
-#header .logo span {
-  margin-left: .5rem;
-  font-size: 0.9rem;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: .08em;
-}
-#header .logo:hover {
-  color: var(--brand-color);
+#header {
+  .logo {
+    display: flex;
+    align-items: center;
+    font-weight: map-get($font, 'weight-bold'); 
+    font-size: 0.9rem;
+    color: var(--brand-color); 
+    text-decoration: none;
+
+
+    span {
+      margin-left: .5rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: inherit; // This forces the span to follow the logo's color
+    }
+
+    &:hover {
+      color: var(--nav-color); // Uses #1B9C85 from your palette
+      
+      span {
+        color: var(--nav-color);
+      }
+    }
+  }
 }
 
 .brandimage_masthead img {
