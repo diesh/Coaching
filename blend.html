@@ -27,18 +27,20 @@
             min-height: 100svh;
             overflow-x: hidden;
             overflow-y: auto;
-            perspective: 1200px;
             display: flex;
             flex-direction: column;
             -webkit-overflow-scrolling: touch;
             background: var(--bg);
         }
 
+        /* VORTEX RINGS EFFECT */
         .vortex-container {
             position: fixed; 
             top: 0; left: 0; width: 100%; height: 100%;
             display: flex; justify-content: center; align-items: center;
             z-index: 1; pointer-events: none;
+            perspective: 1200px;
+            perspective-origin: center;
             transition: transform 1.5s cubic-bezier(0.23, 1, 0.32, 1);
             transform: scale(var(--vortex-scale)) rotate(calc(var(--vortex-scale) * 1.5deg));
         }
@@ -48,6 +50,11 @@
             width: 110vh; height: 110vh;
             border: 1px solid rgba(255,255,255,0.05); 
             border-radius: 50%;
+            transform-style: preserve-3d;
+        }
+
+        @media (max-width: 768px) {
+            .vortex-container { display: none !important; }
         }
 
         .content-wrapper {
@@ -73,6 +80,10 @@
             padding-bottom: 40px;
         }
 
+        @media (max-width: 768px) {
+            .step { filter: none !important; transform: none !important; transition: opacity 0.3s ease; }
+        }
+
         .step.active { display: block; }
         .step.visible { 
             opacity: 1; 
@@ -86,71 +97,28 @@
             display: block;
         }
 
-        h1 {
-            font-family: 'Instrument Serif', serif;
-            font-size: clamp(2rem, 8vw, 3.8rem);
-            font-weight: 400; line-height: 1.1; margin-bottom: 1.5rem; color: #fff;
-        }
+        h1 { font-family: 'Instrument Serif', serif; font-size: clamp(2rem, 8vw, 3.8rem); font-weight: 400; line-height: 1.1; margin-bottom: 1.5rem; color: #fff; }
+        h2 { font-family: 'Instrument Serif', serif; font-size: clamp(1.6rem, 6vw, 2.8rem); font-weight: 400; line-height: 1.1; margin-bottom: 2rem; color: #fff; }
 
-        h2 {
-            font-family: 'Instrument Serif', serif;
-            font-size: clamp(1.6rem, 6vw, 2.8rem);
-            font-weight: 400; line-height: 1.1; margin-bottom: 2rem; color: #fff;
-        }
-
-        .intro-text {
-            font-size: clamp(0.95rem, 2.5vw, 1.15rem); 
-            line-height: 1.6; 
-            color: #aaa; 
-            margin-bottom: 2rem;
-        }
-
+        .intro-text { font-size: clamp(0.95rem, 2.5vw, 1.15rem); line-height: 1.6; color: #aaa; margin-bottom: 2rem; }
         .intro-text strong { color: #fff; font-weight: 600; }
         
-        /* --- Links & Triggers Redesign --- */
         a, .contact-trigger {
-            color: #fff;
-            text-decoration: none;
-            border-bottom: 1px solid var(--accent);
-            padding-bottom: 1px;
-            transition: all 0.2s ease;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
+            color: #fff; text-decoration: none; border-bottom: 1px solid var(--accent);
+            padding-bottom: 1px; transition: all 0.2s ease; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;
         }
+        a:hover, .contact-trigger:hover { background: var(--accent); color: #000; border-bottom-color: transparent; }
 
-        a:hover, .contact-trigger:hover {
-            background: var(--accent);
-            color: #000;
-            border-bottom-color: transparent;
-        }
-
-        .highlight-email {
-            background: rgba(255, 255, 255, 0.15);
-            color: #fff;
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-weight: 600;
-        }
+        .highlight-email { background: rgba(255, 255, 255, 0.15); color: #fff; padding: 2px 6px; border-radius: 4px; font-weight: 600; }
 
         textarea, select {
             width: 100%; background: transparent; border: none;
             border-bottom: 1px solid #222; color: #fff;
             font-family: 'Inter'; font-size: 1.1rem; outline: none;
-            padding: 12px 0; margin-bottom: 1.5rem;
-            border-radius: 0;
-            resize: none;
-            -webkit-appearance: none;
-            line-height: 1.5;
+            padding: 12px 0; margin-bottom: 1.5rem; border-radius: 0; resize: none; -webkit-appearance: none; line-height: 1.5;
         }
         
-        textarea::placeholder { 
-            color: #666; 
-            font-style: italic; 
-            font-size: 0.9rem;
-            line-height: 1.6; 
-        }
+        textarea::placeholder { color: #999; font-style: italic; font-size: 0.95rem; line-height: 1.6; opacity: 1; }
         textarea:focus, select:focus { border-bottom-color: #fff; }
 
         .nav-group { display: flex; gap: 1rem; margin-top: 1rem; flex-wrap: wrap; }
@@ -160,88 +128,51 @@
             padding: 1.1rem 2.2rem; font-weight: 700;
             text-transform: uppercase; letter-spacing: 2px;
             font-size: 0.75rem; cursor: pointer; transition: 0.2s;
-            width: auto;
-            border-radius: 0;
-            -webkit-tap-highlight-color: transparent;
+            width: auto; border-radius: 0; -webkit-tap-highlight-color: transparent;
         }
-
-        @media (hover: hover) {
-            .btn:hover:not(.secondary) { background: var(--accent); color: #fff; }
-        }
-
+        @media (hover: hover) { .btn:hover:not(.secondary) { background: var(--accent); color: #fff; } }
         .btn.secondary { background: transparent; color: #777; border: 1px solid #222; }
+
+        .time-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2rem; }
+        .time-item label { font-size: 0.75rem; color: #ccc; text-transform: uppercase; display: block; margin-bottom: 0.5rem; letter-spacing: 1px; font-weight: 600; }
+
+        .data-footer {
+            position: relative; z-index: 100; width: 100%; padding: 30px 24px; background: #000;
+            border-top: 1px solid #111; font-size: 0.6rem; letter-spacing: 1px; color: #555;
+            display: flex; justify-content: space-between; font-family: monospace; flex-wrap: wrap; gap: 15px; margin-top: auto;
+        }
+        .footer-left { display: flex; align-items: center; gap: 12px; }
 
         @media (max-width: 600px) {
             .btn { width: 100%; }
-            /* Order "Next" above "Back" on mobile */
             .nav-group { flex-direction: column-reverse; }
-            .time-grid { grid-template-columns: 1fr !important; gap: 1rem !important; }
-            .content-wrapper { 
-                padding-top: calc(60px + env(safe-area-inset-top)); 
-                align-items: flex-start;
-                min-height: 0; /* Allow content to dictate height */
-            }
-            .data-footer { 
-                padding-top: 15px !important;
-                padding-bottom: calc(40px + env(safe-area-inset-bottom)) !important; 
-            }
-            .step { padding-bottom: 20px; }
+            .time-grid { grid-template-columns: 1fr !important; }
         }
-
-        .time-grid {
-            display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2rem;
-        }
-        .time-item label { font-size: 0.65rem; color: #888; text-transform: uppercase; display: block; margin-bottom: 0.5rem; }
-
-        .data-footer {
-            position: relative; 
-            z-index: 100;
-            width: 100%;
-            padding: 30px 24px 30px; 
-            background: #000;
-            border-top: 1px solid #111; 
-            font-size: 0.6rem;
-            letter-spacing: 1px; color: #555;
-            display: flex; 
-            justify-content: space-between;
-            font-family: monospace;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin-top: auto;
-        }
-
-        .footer-left { display: flex; align-items: center; gap: 12px; }
-        .contact-trigger svg { width: 14px; height: 14px; fill: currentColor; }
     </style>
 </head>
 <body>
 
     <div class="vortex-container" id="vortex">
         <div class="ring" style="transform: translateZ(0px) scale(1.0)"></div>
-        <div class="ring" style="transform: translateZ(-150px) scale(0.92)"></div>
         <div class="ring" style="transform: translateZ(-350px) scale(0.84)"></div>
-        <div class="ring" style="transform: translateZ(-600px) scale(0.76)"></div>
         <div class="ring" style="transform: translateZ(-900px) scale(0.68)"></div>
-        <div class="ring" style="transform: translateZ(-1250px) scale(0.60)"></div>
         <div class="ring" style="transform: translateZ(-1650px) scale(0.52)"></div>
-        <div class="ring" style="transform: translateZ(-2100px) scale(0.44)"></div>
         <div class="ring" style="transform: translateZ(-2600px) scale(0.36)"></div>
-        <div class="ring" style="transform: translateZ(-3150px) scale(0.28)"></div>
         <div class="ring" style="transform: translateZ(-3750px) scale(0.20)"></div>
-        <div class="ring" style="transform: translateZ(-4400px) scale(0.12)"></div>
         <div class="ring" style="transform: translateZ(-5100px) scale(0.04)"></div>
     </div>
 
     <div class="content-wrapper">
-        <form id="auditForm" action="https://formspree.io/f/mjgebpae" method="POST" novalidate style="width: 100%; display: flex; justify-content: center;">
-            <input type="hidden" name="_subject" value="Study Response: I, Aye, AI">
+        <form id="auditForm" action="https://script.google.com/macros/s/AKfycbwLPmov1Pxz647s_m0mPPO0NWjX4O_URPZ0l1U_iuWtLjJc-JGuOQDp2sqy0cOh4_V1mw/exec" method="POST" novalidate style="width: 100%; display: flex; justify-content: center;">
             <input type="hidden" name="SessionID" id="session_id_input">
+            <input type="hidden" name="Timestamp" id="timestamp_input">
 
+            <!-- Intro Step -->
             <div class="step active visible" id="s0">
                 <span class="meta">A RESEARCH STUDY BY GAGAN DIESH</span>
                 <h1>I, Aye, AI — what's left for us?</h1>
                 <div class="intro-text">
-                    Hi, I’m <strong>Gagan Diesh</strong>. I’m a designer, strategist, and coach. In moments when the stakes are high or the path is unclear, I’ve learned to lean on research and data. For my upcoming talk at BLEND, I’m using these same techniques so that the narrative isn't just one person’s opinion, but a reflection of how <strong>we</strong> are feeling right now. Through this study and a series of deep-dive interviews, I hope to capture a diverse cross-section of what truly matters to us. And if AI is what we are focussed on, what's left for us? I invite you to be as candid as you can knowing that your career and your company will not be harmed in the making of this study!
+                    Hi, I’m <strong>Gagan Diesh</strong>. I’m a designer, strategist, and coach. In moments when the stakes are high or the path is unclear, I’ve learned to lean on research and data. For my upcoming talk at BLEND, I’m using these same techniques so that the narrative isn't just one person’s opinion, but a reflection of how <strong>we</strong> are feeling right now. Through this study and a series of deep-dive interviews, I hope to capture a diverse cross-section of what truly matters to us. And if AI is what we are focussed on, what's left for us? I invite you to be as candid as possible, knowing that your career and your company will not be harmed in the making of this study!
                 </div>
                 <div style="background: #080808; border-left: 2px solid #333; padding: 20px; margin-bottom: 2.5rem; font-size: 0.8rem; line-height: 1.6; color: #666;">
                     <strong>ANONYMITY PROTOCOL:</strong> Your responses are confidential and scrubbed of identifying metadata. Data will be aggregated to reveal trends and shared during the session. I might use direct quotes, but never with any identifying information such as company names etc. <span class="highlight-email">If you wish to be contacted for a follow-up interview, please include your email in your final response.</span>
@@ -249,6 +180,7 @@
                 <button type="button" class="btn" onclick="navigate(1)">Participate in Study</button>
             </div>
 
+            <!-- Question 1 -->
             <div class="step" id="s1">
                 <span class="meta">01 / 13</span>
                 <h2>What is your current professional title?</h2>
@@ -256,6 +188,7 @@
                 <div class="nav-group"><button type="button" class="btn" onclick="navigate(2)">Next</button></div>
             </div>
 
+            <!-- Question 2 -->
             <div class="step" id="s2">
                 <span class="meta">02 / 13</span>
                 <h2>How is your average week divided?</h2>
@@ -265,119 +198,93 @@
                     <div class="time-item"><label>Strategic/Systemic Thinking</label><select name="percent_strategy" required><option value="" disabled selected>%</option><option>10%</option><option>30%</option><option>50%</option><option>70%+</option></select></div>
                     <div class="time-item"><label>Collaborative Problem Solving</label><select name="percent_collab" required><option value="" disabled selected>%</option><option>10%</option><option>30%</option><option>50%</option><option>70%+</option></select></div>
                 </div>
-                <div class="nav-group">
-                    <button type="button" class="btn secondary" onclick="navigate(1)">Back</button>
-                    <button type="button" class="btn" onclick="navigate(3)">Next</button>
-                </div>
+                <div class="nav-group"><button type="button" class="btn secondary" onclick="navigate(1)">Back</button><button type="button" class="btn" onclick="navigate(3)">Next</button></div>
             </div>
 
+            <!-- Question 3 -->
             <div class="step" id="s3">
                 <span class="meta">03 / 13</span>
                 <h2>What have you automated recently, and how did it change the outcome?</h2>
                 <textarea name="automation_impact" placeholder="Explain the shift in quality or speed you've observed..." rows="2" required></textarea>
-                <div class="nav-group">
-                    <button type="button" class="btn secondary" onclick="navigate(2)">Back</button>
-                    <button type="button" class="btn" onclick="navigate(4)">Next</button>
-                </div>
+                <div class="nav-group"><button type="button" class="btn secondary" onclick="navigate(2)">Back</button><button type="button" class="btn" onclick="navigate(4)">Next</button></div>
             </div>
 
+            <!-- Question 4 -->
             <div class="step" id="s4">
                 <span class="meta">04 / 13</span>
                 <h2>Which part of your job do you fear losing most to automation?</h2>
                 <textarea name="craft_love_fear" placeholder="Describe the specific tasks or processes you want to keep manual..." rows="2" required></textarea>
-                <div class="nav-group">
-                    <button type="button" class="btn secondary" onclick="navigate(3)">Back</button>
-                    <button type="button" class="btn" onclick="navigate(5)">Next</button>
-                </div>
+                <div class="nav-group"><button type="button" class="btn secondary" onclick="navigate(3)">Back</button><button type="button" class="btn" onclick="navigate(5)">Next</button></div>
             </div>
 
+            <!-- Question 5 -->
             <div class="step" id="s5">
                 <span class="meta">05 / 13</span>
                 <h2>What part of your job do you wish automation would take over?</h2>
                 <textarea name="job_hate_wish" placeholder="Identify the parts of your job that you'd prefer to offload..." rows="2" required></textarea>
-                <div class="nav-group">
-                    <button type="button" class="btn secondary" onclick="navigate(4)">Back</button>
-                    <button type="button" class="btn" onclick="navigate(6)">Next</button>
-                </div>
+                <div class="nav-group"><button type="button" class="btn secondary" onclick="navigate(4)">Back</button><button type="button" class="btn" onclick="navigate(6)">Next</button></div>
             </div>
 
+            <!-- Question 6 -->
             <div class="step" id="s6">
                 <span class="meta">06 / 13</span>
                 <h2>What cultural habit is currently hindering innovation in your environment?</h2>
                 <textarea name="innovation_barriers" placeholder="Any systemic or behavioral obstacles you encounter..." rows="2" required></textarea>
-                <div class="nav-group">
-                    <button type="button" class="btn secondary" onclick="navigate(5)">Back</button>
-                    <button type="button" class="btn" onclick="navigate(7)">Next</button>
-                </div>
+                <div class="nav-group"><button type="button" class="btn secondary" onclick="navigate(5)">Back</button><button type="button" class="btn" onclick="navigate(7)">Next</button></div>
             </div>
 
+            <!-- Question 7 -->
             <div class="step" id="s7">
                 <span class="meta">07 / 13</span>
                 <h2>What is the 'human residue' that makes your work indispensable?</h2>
                 <textarea name="human_residue" placeholder="Beyond skills, what are the traits that a machine cannot replicate?..." rows="2" required></textarea>
-                <div class="nav-group">
-                    <button type="button" class="btn secondary" onclick="navigate(6)">Back</button>
-                    <button type="button" class="btn" onclick="navigate(8)">Next</button>
-                </div>
+                <div class="nav-group"><button type="button" class="btn secondary" onclick="navigate(6)">Back</button><button type="button" class="btn" onclick="navigate(8)">Next</button></div>
             </div>
 
+            <!-- Question 8 -->
             <div class="step" id="s8">
                 <span class="meta">08 / 13</span>
                 <h2>Where have you been forced to choose efficiency over quality?</h2>
                 <textarea name="efficiency_tradeoff" placeholder="Discuss the pressures or constraints that led to this compromise..." rows="2" required></textarea>
-                <div class="nav-group">
-                    <button type="button" class="btn secondary" onclick="navigate(7)">Back</button>
-                    <button type="button" class="btn" onclick="navigate(9)">Next</button>
-                </div>
+                <div class="nav-group"><button type="button" class="btn secondary" onclick="navigate(7)">Back</button><button type="button" class="btn" onclick="navigate(9)">Next</button></div>
             </div>
 
+            <!-- Question 9 -->
             <div class="step" id="s9">
                 <span class="meta">09 / 13</span>
                 <h2>What survival playbook would you give a junior entering the industry today?</h2>
                 <textarea name="junior_advice" placeholder="What fundamental advice would you share for someone starting out now?..." rows="2" required></textarea>
-                <div class="nav-group">
-                    <button type="button" class="btn secondary" onclick="navigate(8)">Back</button>
-                    <button type="button" class="btn" onclick="navigate(10)">Next</button>
-                </div>
+                <div class="nav-group"><button type="button" class="btn secondary" onclick="navigate(8)">Back</button><button type="button" class="btn" onclick="navigate(10)">Next</button></div>
             </div>
 
+            <!-- Question 10 -->
             <div class="step" id="s10">
                 <span class="meta">10 / 13</span>
                 <h2>How are you planning to stay relevant in the coming year?</h2>
                 <textarea name="relevancy_strategy" placeholder="Share your strategy for growth and any concerns you have about it..." rows="2" required></textarea>
-                <div class="nav-group">
-                    <button type="button" class="btn secondary" onclick="navigate(9)">Back</button>
-                    <button type="button" class="btn" onclick="navigate(11)">Next</button>
-                </div>
+                <div class="nav-group"><button type="button" class="btn secondary" onclick="navigate(9)">Back</button><button type="button" class="btn" onclick="navigate(11)">Next</button></div>
             </div>
 
+            <!-- Question 11 -->
             <div class="step" id="s11">
                 <span class="meta">11 / 13</span>
                 <h2>How confident are you that your current 'Hard Skills' will be relevant in 18 months?</h2>
                 <select name="relevancy_confidence" required>
-                    <option value="" disabled selected>Select confidence level...</option>
-                    <option>1 - Not confident at all</option>
-                    <option>2</option><option>3</option><option>4</option>
-                    <option>5 - Somewhat confident</option>
-                    <option>6</option><option>7</option><option>8</option><option>9</option>
-                    <option>10 - Fully confident</option>
+                    <option value="" disabled selected>Select level...</option>
+                    <option>1 - Not confident at all</option><option>2</option><option>3</option><option>4</option><option>5 - Somewhat confident</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10 - Fully confident</option>
                 </select>
-                <div class="nav-group">
-                    <button type="button" class="btn secondary" onclick="navigate(10)">Back</button>
-                    <button type="button" class="btn" onclick="navigate(12)">Next</button>
-                </div>
+                <div class="nav-group"><button type="button" class="btn secondary" onclick="navigate(10)">Back</button><button type="button" class="btn" onclick="navigate(12)">Next</button></div>
             </div>
 
+            <!-- Question 12 -->
             <div class="step" id="s12">
                 <span class="meta">12 / 13</span>
                 <h2>What is a truth about our industry that is uncomfortable to say out loud?</h2>
                 <textarea name="uncomfortable_truth" placeholder="Share any unspoken realities that you believe needs to be acknowledged..." rows="2" required></textarea>
-                <div class="nav-group">
-                    <button type="button" class="btn secondary" onclick="navigate(11)">Back</button>
-                    <button type="button" class="btn" onclick="navigate(13)">Next</button>
-                </div>
+                <div class="nav-group"><button type="button" class="btn secondary" onclick="navigate(11)">Back</button><button type="button" class="btn" onclick="navigate(13)">Next</button></div>
             </div>
 
+            <!-- Question 13 -->
             <div class="step" id="s13">
                 <span class="meta">13 / 13</span>
                 <h2>What should I have asked but didn't?</h2>
@@ -388,6 +295,7 @@
                 </div>
             </div>
 
+            <!-- Success -->
             <div class="step" id="success">
                 <span class="meta">TRANSMISSION COMPLETE</span>
                 <h2>Response Recorded.</h2>
@@ -396,12 +304,11 @@
                 </p>
                 <p style="color: #666; font-size: 0.85rem;">
                     Questions? More to add? Please feel free to <span class="contact-trigger" onclick="contactResearcher()">
-                        <svg viewBox="0 0 24 24" style="vertical-align:middle; fill:currentColor;"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                        <svg viewBox="0 0 24 24" style="vertical-align:middle; fill:currentColor; width: 14px; height: 14px;"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
                         contact me
                     </span>
                 </p>
             </div>
-
         </form>
     </div>
 
@@ -410,7 +317,7 @@
             RESEARCHER: <a href="https://www.diesh.ca/" target="_blank">Gagan DIESH</a> 
             <span style="margin: 0 4px; color: #333;"> | </span>
             <span class="contact-trigger" onclick="contactResearcher()">
-                <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                <svg viewBox="0 0 24 24" style="width: 14px; height: 14px; fill: currentColor; vertical-align: middle;"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
                 contact me
             </span>
         </div>
@@ -427,6 +334,7 @@
         const sid = Math.random().toString(36).substring(7).toUpperCase();
         document.getElementById('sid').innerText = sid;
         document.getElementById('session_id_input').value = sid;
+        document.getElementById('timestamp_input').value = new Date().toLocaleString();
 
         function navigate(targetStep) {
             const currentStep = document.querySelector('.step.active');
@@ -436,60 +344,43 @@
             const currentStepIdNum = (currentStep.id === 's0') ? 0 : (currentStep.id === 'success' ? 99 : parseInt(currentIdStr));
             const targetStepIdNum = (targetStep === 'uccess') ? 99 : parseInt(targetStep);
 
-            // Validation for moving Forward
+            // Forward Validation
             if (targetStepIdNum > currentStepIdNum && currentStepIdNum !== 0 && currentStepIdNum !== 99) {
                 const currentInputs = currentStep.querySelectorAll('textarea[required], select[required]');
                 let allValid = true;
-                
                 currentInputs.forEach(input => {
-                    if (!input.value.trim()) {
-                        allValid = false;
-                        input.style.borderBottomColor = '#ff0000';
-                    } else {
-                        input.style.borderBottomColor = '';
-                    }
+                    if (!input.value.trim()) { allValid = false; input.style.borderBottomColor = '#ff3c3c'; }
+                    else { input.style.borderBottomColor = ''; }
                 });
-
-                if (!allValid) {
-                    const btn = currentStep.querySelector('.btn:not(.secondary)');
-                    if (btn) {
-                        btn.style.background = '#ff0000';
-                        btn.style.color = '#fff';
-                        setTimeout(() => { btn.style.background = ''; btn.style.color = ''; }, 800);
-                    }
-                    return;
-                }
+                if (!allValid) return;
             }
 
-            // Perform Transition
             const nextStep = (targetStep === 'uccess') ? document.getElementById('success') : document.getElementById('s' + targetStep);
-            const vortexScale = targetStep === 'uccess' ? 3.5 : 1 + (targetStepIdNum * 0.12);
-            document.documentElement.style.setProperty('--vortex-scale', vortexScale);
-
-            currentStep.classList.remove('visible');
             
+            // Adjust background depth based on progress
+            document.documentElement.style.setProperty('--vortex-scale', 1 + (targetStepIdNum * 0.12));
+            
+            currentStep.classList.remove('visible');
             setTimeout(() => {
-                document.querySelectorAll('.step').forEach(s => {
-                    s.classList.remove('active');
-                    s.classList.remove('visible');
-                });
-                
+                document.querySelectorAll('.step').forEach(s => s.classList.remove('active', 'visible'));
                 nextStep.classList.add('active');
-                window.scrollTo({ top: 0, behavior: 'instant' });
-
                 setTimeout(() => {
                     nextStep.classList.add('visible');
-                    const nextInput = nextStep.querySelector('textarea, select');
-                    if (nextInput) nextInput.focus();
+                    const firstInput = nextStep.querySelector('textarea, select');
+                    if (firstInput) firstInput.focus();
                 }, 50);
+                window.scrollTo(0,0);
             }, 400);
         }
 
+        // Enter Key Navigation
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Enter' && !e.shiftKey) {
                 const activeStep = document.querySelector('.step.active');
                 if (!activeStep || activeStep.id === 'success') return;
-                if (e.target.tagName === 'TEXTAREA') e.preventDefault();
+                
+                if (e.target.tagName === 'TEXTAREA' && e.target.rows === 1) e.preventDefault();
+                
                 const currentId = activeStep.id === 's0' ? 0 : parseInt(activeStep.id.replace('s', ''));
                 if (currentId === 13) {
                     submitForm();
@@ -500,9 +391,6 @@
         });
 
         async function submitForm() {
-            const activeStep = document.querySelector('.step.active');
-            if (activeStep.id !== 's13') return;
-
             const submitBtn = document.getElementById('submit_btn');
             if (submitBtn.disabled) return;
 
@@ -511,32 +399,26 @@
 
             const form = document.getElementById('auditForm');
             const formData = new FormData(form);
+            const params = new URLSearchParams();
+            formData.forEach((value, key) => params.append(key, value));
+
             try {
-                const response = await fetch(form.action, {
+                // Submit to Google Apps Script
+                await fetch(form.action, {
                     method: 'POST',
-                    body: formData,
-                    headers: { 'Accept': 'application/json' }
+                    mode: 'no-cors',
+                    cache: 'no-cache',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: params.toString()
                 });
-                if (response.ok) {
-                    navigate('uccess');
-                } else {
-                    throw new Error();
-                }
+                // Since 'no-cors' doesn't return readable success, we assume transmission and navigate
+                navigate('uccess');
             } catch (err) {
-                submitBtn.innerText = "Retry Transmission?";
+                console.error("Submission error:", err);
+                submitBtn.innerText = "Error. Retry?";
                 submitBtn.disabled = false;
-                submitBtn.style.background = '#ff0000';
-                submitBtn.style.color = '#fff';
             }
         }
-
-        document.getElementById('auditForm').addEventListener('submit', (e) => {
-            e.preventDefault();
-            const activeStep = document.querySelector('.step.active');
-            if (activeStep && activeStep.id === 's13') {
-                submitForm();
-            }
-        });
     </script>
 </body>
 </html>
