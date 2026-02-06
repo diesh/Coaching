@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BLEND 2026 | I, Aye, AI — The Full Audit</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --bg: #000000;
+            --text: #FFFFFF;
+            --accent: #FF3C3C;
+            --dim: #444444;
+            --glass: rgba(255, 255, 255, 0.03);
+            --transition-speed: 0.5s;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            background-color: #050505;
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .slide-container {
+            width: 100%;
+            height: 100%;
+            background-color: var(--bg);
+            position: absolute;
+            top: 0; left: 0;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 80px 120px;
+        }
+
+        .slide-container.active {
+            display: flex;
+            animation: slideFade var(--transition-speed) ease-out;
+        }
+
+        @keyframes slideFade {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* TYPOGRAPHY */
+        h1, h2, h3 { font-family: 'Instrument Serif', serif; font-weight: 400; line-height: 1.1; }
+        h1 { font-size: 110px; font-style: italic; text-align: center; }
+        .slide-title { font-size: 64px; font-style: italic; width: 100%; margin-bottom: 30px; border-bottom: 1px solid #1a1a1a; padding-bottom: 20px; }
+        .accent-text { color: var(--accent); font-weight: 700; font-family: monospace; letter-spacing: 4px; font-size: 12px; text-transform: uppercase; margin-bottom: 15px; }
+
+        /* DATA VISUALS */
+        .stat-big { font-size: 160px; font-family: 'Instrument Serif'; color: var(--accent); line-height: 0.9; }
+        .stat-sub { font-size: 20px; text-transform: uppercase; letter-spacing: 2px; color: var(--dim); margin-top: 10px; }
+        
+        .stat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 60px; width: 100%; margin-top: 50px; }
+        .stat-card { border-left: 1px solid var(--dim); padding-left: 25px; transition: border-color 0.3s; }
+        .stat-card:hover { border-color: var(--accent); }
+        .stat-card h4 { font-size: 48px; font-family: 'Instrument Serif'; margin-bottom: 5px; }
+        .stat-card p { font-size: 12px; text-transform: uppercase; color: #666; letter-spacing: 1px; }
+
+        /* QUOTES & CONTENT */
+        .quote-large { font-size: 42px; line-height: 1.2; font-style: italic; color: #eee; max-width: 900px; text-align: left; position: relative; }
+        .quote-large::before { content: "“"; position: absolute; left: -50px; top: -20px; font-size: 120px; color: var(--accent); opacity: 0.3; }
+        .source-tag { margin-top: 30px; font-family: monospace; font-size: 14px; color: var(--accent); display: flex; align-items: center; gap: 10px; }
+        .source-tag::before { content: ""; width: 40px; height: 1px; background: var(--accent); }
+
+        .truth-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; width: 100%; }
+        .truth-item { background: #080808; padding: 40px; border: 1px solid #151515; position: relative; overflow: hidden; }
+        .truth-item::after { content: "TOP SECRET"; position: absolute; right: -20px; top: 10px; transform: rotate(45deg); font-size: 8px; font-family: monospace; opacity: 0.1; }
+
+        /* NAVIGATION & FOOTER */
+        .footer {
+            position: absolute; bottom: 40px; left: 120px; right: 120px;
+            display: flex; justify-content: space-between;
+            font-family: monospace; font-size: 10px; color: #222;
+            text-transform: uppercase; letter-spacing: 2px;
+        }
+        .progress-bar { position: absolute; bottom: 0; left: 0; height: 2px; background: var(--accent); transition: width 0.3s; }
+        
+        .nav-hint { position: absolute; top: 40px; right: 40px; font-size: 10px; color: #333; font-family: monospace; }
+    </style>
+</head>
+<body>
+
+    <div class="nav-hint">SPACE / ARROWS TO NAVIGATE</div>
+    <div class="progress-bar" id="progress"></div>
+
+    <!-- SLIDE 1: COVER -->
+    <div class="slide-container active" id="s1">
+        <span class="accent-text">A Research Synthesis by Gagan Diesh</span>
+        <h1>I, Aye, AI</h1>
+        <p style="color: var(--accent); margin-top: 20px; font-size: 14px; font-family: monospace; letter-spacing: 5px;">THE HUMAN RESIDUE AUDIT</p>
+        <div class="footer"><span>BLEND 2026</span><span>SESSION 4.02</span><span>N=20+7</span></div>
+    </div>
+
+    <!-- SLIDE 2: THE SCALE -->
+    <div class="slide-container" id="s2">
+        <span class="accent-text">The Methodology</span>
+        <h2 class="slide-title">The Depth of Inquiry</h2>
+        <div class="stat-grid">
+            <div class="stat-card"><h4>20</h4><p>Quantitative Audits</p></div>
+            <div class="stat-card"><h4>14</h4><p>Hours of Stakeholder Audio</p></div>
+            <div class="stat-card"><h4>07</h4><p>Sector-Specific Archetypes</p></div>
+        </div>
+        <p style="margin-top: 50px; color: #555; line-height: 1.8; max-width: 800px;">
+            We surveyed 20 practitioners to find the "average anxiety." Then we sat down with the CEO, the Academic, the Recruiter, and the Coach to find the "hidden friction." This is what happens when the math meets the mood.
+        </p>
+    </div>
+
+    <!-- SLIDE 3: THE CORE PROBLEM -->
+    <div class="slide-container" id="s3">
+        <span class="accent-text">Audit Question 02 // Time Allocation</span>
+        <h2 class="slide-title">The Efficiency Debt</h2>
+        <div class="stat-big">65%</div>
+        <div class="stat-sub">of the professional week is "Optics"</div>
+        <p style="margin-top: 40px; color: #888; text-align: center; max-width: 600px;">
+            Status meetings, admin, and "strategic positioning" are eating the very craft we claim is being threatened. We are automating 12% of our job to make room for more email.
+        </p>
+    </div>
+
+    <!-- SLIDE 4: THE CEO'S REALITY -->
+    <div class="slide-container" id="s4">
+        <span class="accent-text">Perspective 01 // The Founder</span>
+        <div class="quote-large">
+            "I don't need 'pixel-perfect' anymore. I need 'market-correct.' If AI gets us to 80% there in 10 seconds, the 'soul' of your design is a luxury I can't afford."
+        </div>
+        <div class="source-tag">CEO / FOUNDER, TECH SECTOR</div>
+    </div>
+
+    <!-- SLIDE 5: THE RECRUITER'S WARNING -->
+    <div class="slide-container" id="s5">
+        <span class="accent-text">Perspective 02 // The Gatekeeper</span>
+        <h2 class="slide-title">The Junior Dead Zone</h2>
+        <div class="stat-grid">
+            <div class="stat-card" style="border-color: var(--accent);"><h4>0%</h4><p>Junior Roles Open at Senior Rates</p></div>
+            <div class="stat-card"><h4>92%</h4><p>Portfolios using generic AI assets</p></div>
+            <div class="stat-card"><h4>High</h4><p>Risk of Skill Atrophy</p></div>
+        </div>
+        <p style="margin-top: 40px; color: #777;">
+            The recruiter’s truth: "We aren't hiring for potential anymore. We're hiring for immediate AI-assisted output. We've stopped building the bench."
+        </p>
+    </div>
+
+    <!-- SLIDE 6: AGENCY VS IN-HOUSE -->
+    <div class="slide-container" id="s6">
+        <span class="accent-text">Perspective 03 // Agency Leader</span>
+        <div class="quote-large" style="font-size: 36px;">
+            "Our billable model is a suicide pact. We are charging for hours that a machine performs in minutes. Either we find a new 'Human Premium' or the agency model is dead by 2027."
+        </div>
+        <div class="source-tag">AGENCY PRINCIPAL, TORONTO</div>
+    </div>
+
+    <!-- SLIDE 7: THE RESEARCHER'S LAMENT -->
+    <div class="slide-container" id="s7">
+        <span class="accent-text">Perspective 04 // Research Leader</span>
+        <h2 class="slide-title">Synthetic Empathy</h2>
+        <div style="display: flex; gap: 40px; align-items: flex-start;">
+            <div style="flex: 1; padding: 30px; background: #0a0a0a; border: 1px solid #222;">
+                <h3 style="color: var(--accent); margin-bottom: 15px;">The Aye</h3>
+                <p style="font-size: 14px; color: #888;">"Using LLMs to summarize 50 interviews in 5 seconds is efficient."</p>
+            </div>
+            <div style="flex: 1; padding: 30px; background: #0a0a0a; border: 1px solid #222;">
+                <h3 style="color: var(--text); margin-bottom: 15px;">The I</h3>
+                <p style="font-size: 14px; color: #888;">"But the machine doesn't know what it feels like to hesitate before answering. We are losing the 'silent data'."</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 8: THE ACADEMIC PERSPECTIVE -->
+    <div class="slide-container" id="s8">
+        <span class="accent-text">Perspective 05 // The Academic</span>
+        <div class="quote-large">
+            "We are teaching 'Judgment' in a world that only rewards 'Generation.' It’s like teaching a chef how to taste while they’re being forced to cook with a microwave."
+        </div>
+        <div class="source-tag">DESIGN PROFESSOR & RESEARCHER</div>
+    </div>
+
+    <!-- SLIDE 9: 18-MONTH CONFIDENCE -->
+    <div class="slide-container" id="s9">
+        <span class="accent-text">Audit Question 11 // Skill Relevancy</span>
+        <h2 class="slide-title">The Confidence Gap</h2>
+        <div class="stat-big" style="color: #fff; font-size: 120px;">4.2<span style="font-size: 40px; color: var(--accent);"> / 10</span></div>
+        <p style="margin-top: 20px; text-transform: uppercase; letter-spacing: 3px; color: #444;">Average confidence in current 'Hard Skills' lasting 18 months.</p>
+        <p style="margin-top: 40px; color: #666; font-style: italic;">"I feel like I'm running up a down-escalator that's accelerating." — Anonymous Response</p>
+    </div>
+
+    <!-- SLIDE 10: THE UNCOMFORTABLE TRUTHS (QUICK HITS) -->
+    <div class="slide-container" id="s10">
+        <span class="accent-text">Audit Question 12 // Unfiltered</span>
+        <h2 class="slide-title">The Shadow Truths</h2>
+        <div class="truth-grid">
+            <div class="truth-item">"Most of my job is just fixing AI errors and pretending I did it from scratch."</div>
+            <div class="truth-item">"The 'Human' part of my role is actually just being the one to blame when things break."</div>
+            <div class="truth-item">"Innovation in our company is just a budget line item that never actually happens."</div>
+            <div class="truth-item">"We are all just glorified curators of a machine's hallucinations now."</div>
+        </div>
+    </div>
+
+    <!-- SLIDE 11: THE SHIFT -->
+    <div class="slide-container" id="s11">
+        <h1 style="font-size: 80px;">From Maker to <span style="color: var(--accent);">Editor</span></h1>
+        <p style="margin-top: 30px; color: #555; letter-spacing: 2px;">THE NEW HIERARCHY OF VALUE</p>
+        <div class="stat-grid" style="margin-top: 60px;">
+            <div class="stat-card"><h4>Taste</h4><p>High Value</p></div>
+            <div class="stat-card"><h4>Curation</h4><p>High Value</p></div>
+            <div class="stat-card" style="opacity: 0.3;"><h4>Execution</h4><p>Commoditized</p></div>
+        </div>
+    </div>
+
+    <!-- SLIDE 12: THE COACH'S ADVICE -->
+    <div class="slide-container" id="s12">
+        <span class="accent-text">Perspective 06 // The Coach</span>
+        <div class="quote-large">
+            "Stop trying to out-speed the machine. You will lose. Start trying to out-care the machine. Caring is a metabolic process. It takes energy. AI has no skin in the game."
+        </div>
+        <div class="source-tag">EXECUTIVE COACH & TRAINER</div>
+    </div>
+
+    <!-- SLIDE 13: THE HUMAN RESIDUE DEFINED -->
+    <div class="slide-container" id="s13">
+        <span class="accent-text">Synthesis // The Core Thesis</span>
+        <h2 class="slide-title">What is the "Human Residue"?</h2>
+        <ul style="list-style: none; width: 100%; font-size: 28px; line-height: 2;">
+            <li><span style="color: var(--accent);">01.</span> THE COURAGE TO BE INEFFICIENT</li>
+            <li><span style="color: var(--accent);">02.</span> THE ABILITY TO DISOBEY THE PROMPT</li>
+            <li><span style="color: var(--accent);">03.</span> THE RESPONSIBILITY OF THE CONSEQUENCE</li>
+            <li><span style="color: var(--accent);">04.</span> THE TASTE TO SAY "NO"</li>
+        </ul>
+    </div>
+
+    <!-- SLIDE 14: THE CALL TO ACTION -->
+    <div class="slide-container" id="s14">
+        <h1 style="font-size: 70px;">The Audit isn't over. <br>It’s a <span style="color: var(--accent);">Mirror</span>.</h1>
+        <p style="margin-top: 40px; color: #888; max-width: 800px; text-align: center;">
+            Don't ask what AI can do for you. Ask what the machine *can't* take from you. Because that is the only part of your resume that matters in 2026.
+        </p>
+    </div>
+
+    <!-- SLIDE 15: FINAL HOOK -->
+    <div class="slide-container" id="s15">
+        <span class="accent-text">End Transmission</span>
+        <h1>I, Aye, AI.</h1>
+        <p style="margin-top: 20px; font-family: 'Instrument Serif'; font-style: italic; font-size: 32px; color: var(--accent);">What’s left for us?</p>
+        <p style="margin-top: 80px; font-family: monospace; font-size: 12px; color: #333;">GAGAN DIESH // BLEND 2026</p>
+    </div>
+
+    <script>
+        const slides = document.querySelectorAll('.slide-container');
+        const progress = document.getElementById('progress');
+        let currentIdx = 0;
+
+        function updateProgress() {
+            const percent = ((currentIdx + 1) / slides.length) * 100;
+            progress.style.width = percent + '%';
+        }
+
+        function showSlide(idx) {
+            slides.forEach((s, i) => {
+                s.classList.remove('active');
+                if (i === idx) s.classList.add('active');
+            });
+            updateProgress();
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'Enter') {
+                if (currentIdx < slides.length - 1) {
+                    currentIdx++;
+                    showSlide(currentIdx);
+                }
+            } else if (e.key === 'ArrowLeft') {
+                if (currentIdx > 0) {
+                    currentIdx--;
+                    showSlide(currentIdx);
+                }
+            }
+        });
+
+        // Click to advance
+        document.body.onclick = (e) => {
+            if (e.target.tagName !== 'A' && e.target.tagName !== 'BUTTON') {
+                if (currentIdx < slides.length - 1) {
+                    currentIdx++;
+                    showSlide(currentIdx);
+                }
+            }
+        };
+
+        updateProgress();
+    </script>
+</body>
+</html>
