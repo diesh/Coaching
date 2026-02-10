@@ -163,7 +163,7 @@
     </div>
 
     <div class="content-wrapper">
-        <form id="auditForm" action="https://script.google.com/macros/s/AKfycbwLPmov1Pxz647s_m0mPPO0NWjX4O_URPZ0l1U_iuWtLjJc-JGuOQDp2sqy0cOh4_V1mw/exec" method="POST" novalidate style="width: 100%; display: flex; justify-content: center;">
+        <form id="auditForm" action="https://script.google.com/macros/s/AKfycbwLb7BtRnZdoYRaIL5HtZzhvOc6VScw-F2ozG7VpytxibCKuuol_QyHtvdUsymEPyoQaw/exec" method="POST" novalidate style="width: 100%; display: flex; justify-content: center;">
             <input type="hidden" name="SessionID" id="session_id_input">
             <input type="hidden" name="Timestamp" id="timestamp_input">
 
@@ -171,12 +171,14 @@
             <div class="step active visible" id="s0">
                 <span class="meta">A RESEARCH STUDY BY GAGAN DIESH</span>
                 <h1>I, Aye, AI — what's left for us?</h1>
-                <div class="intro-text">
-                    Hi, I’m <strong>Gagan Diesh</strong>. I’m a designer, strategist, and coach. In moments when the stakes are high or the path is unclear, I’ve learned to lean on research and data. For my upcoming talk at BLEND, I’m using these same techniques so that the narrative isn't just one person’s opinion, but a reflection of how <strong>we</strong> are feeling right now. Through this study and a series of deep-dive interviews, I hope to capture a diverse cross-section of what truly matters to us. And if AI is what we are focussed on, what's left for us? I invite you to be as candid as possible, knowing that your career and your company will not be harmed in the making of this study!
-                </div>
+                <p class="intro-text">
+                    Hi, I’m <strong>Gagan Diesh</strong>. I’m a designer, strategist, and coach. When stakes are high or paths unclear, I turn to research. For my upcoming BLEND talk, I'm doing exactly that. It won't be based on just my opinion. It'll a snapshot of how <strong>we</strong> are feeling right now. Your responses feed into a larger conversation about what matters to us. If AI is taking center stage, what's left for the rest of us? I invite you to be as candid as possible, knowing that your career and your company will not be harmed in the making of this study!
+                </p>
+                <p class="intro-text"><strong>What happens next:</strong> I'll analyze responses, conduct follow-up interviews, and present findings at BLEND 2026. <strong>What are the results? Leave your email in the final question.</strong></p>
                 <div style="background: #080808; border-left: 2px solid #333; padding: 20px; margin-bottom: 2.5rem; font-size: 0.8rem; line-height: 1.6; color: #666;">
-                    <strong>ANONYMITY PROTOCOL:</strong> Your responses are confidential and scrubbed of identifying metadata. Data will be aggregated to reveal trends and shared during the session. I might use direct quotes, but never with any identifying information such as company names etc. <span class="highlight-email">If you wish to be contacted for a follow-up interview, please include your email in your final response.</span>
+                    <strong style="color: #FF3C3C;">YOUR PRIVACY IS PROTECTED:</strong> <BR />Your responses are confidential and scrubbed of identifying metadata. Data will be aggregated to reveal trends and shared during the session. I might use direct quotes, but never with any identifying information such as company names etc. 
                 </div>
+                
                 <button type="button" class="btn" onclick="navigate(1)">Participate in Study</button>
             </div>
 
@@ -204,7 +206,7 @@
             <!-- Question 3 -->
             <div class="step" id="s3">
                 <span class="meta">03 / 13</span>
-                <h2>What have you automated recently, and how did it change the outcome?</h2>
+                <h2>What have you automated recently, and what changed because of it?</h2>
                 <textarea name="automation_impact" placeholder="Explain the shift in quality or speed you've observed..." rows="2" required></textarea>
                 <div class="nav-group"><button type="button" class="btn secondary" onclick="navigate(2)">Back</button><button type="button" class="btn" onclick="navigate(4)">Next</button></div>
             </div>
@@ -212,23 +214,23 @@
             <!-- Question 4 -->
             <div class="step" id="s4">
                 <span class="meta">04 / 13</span>
-                <h2>Which part of your job do you fear losing most to automation?</h2>
-                <textarea name="craft_love_fear" placeholder="Describe the specific tasks or processes you want to keep manual..." rows="2" required></textarea>
+                <h2>What part of your work would you fight to protect from automation?</h2>
+                <textarea name="job_keep_notlose" placeholder="Describe the specific tasks or processes you want to keep manual..." rows="2" required></textarea>
                 <div class="nav-group"><button type="button" class="btn secondary" onclick="navigate(3)">Back</button><button type="button" class="btn" onclick="navigate(5)">Next</button></div>
             </div>
 
             <!-- Question 5 -->
             <div class="step" id="s5">
                 <span class="meta">05 / 13</span>
-                <h2>What part of your job do you wish automation would take over?</h2>
-                <textarea name="job_hate_wish" placeholder="Identify the parts of your job that you'd prefer to offload..." rows="2" required></textarea>
+                <h2>What would you happily hand off to a machine tomorrow?</h2>
+                <textarea name="job_giveup" placeholder="Identify the parts of your job that you'd prefer to offload..." rows="2" required></textarea>
                 <div class="nav-group"><button type="button" class="btn secondary" onclick="navigate(4)">Back</button><button type="button" class="btn" onclick="navigate(6)">Next</button></div>
             </div>
 
             <!-- Question 6 -->
             <div class="step" id="s6">
                 <span class="meta">06 / 13</span>
-                <h2>What cultural habit is currently hindering innovation in your environment?</h2>
+                <h2>What recurring behavior at your work slows down new ideas or better solutions?</h2>
                 <textarea name="innovation_barriers" placeholder="Any systemic or behavioral obstacles you encounter..." rows="2" required></textarea>
                 <div class="nav-group"><button type="button" class="btn secondary" onclick="navigate(5)">Back</button><button type="button" class="btn" onclick="navigate(7)">Next</button></div>
             </div>
@@ -236,8 +238,8 @@
             <!-- Question 7 -->
             <div class="step" id="s7">
                 <span class="meta">07 / 13</span>
-                <h2>What is the 'human residue' that makes your work indispensable?</h2>
-                <textarea name="human_residue" placeholder="Beyond skills, what are the traits that a machine cannot replicate?..." rows="2" required></textarea>
+                <h2>What makes your work irreplaceable? What part can't be automated?</h2>
+                <textarea name="what_is_irreplaceable" placeholder="Beyond skills, what are the traits that a machine cannot replicate?..." rows="2" required></textarea>
                 <div class="nav-group"><button type="button" class="btn secondary" onclick="navigate(6)">Back</button><button type="button" class="btn" onclick="navigate(8)">Next</button></div>
             </div>
 
@@ -252,7 +254,7 @@
             <!-- Question 9 -->
             <div class="step" id="s9">
                 <span class="meta">09 / 13</span>
-                <h2>What survival playbook would you give a junior entering the industry today?</h2>
+                <h2>What advice would you give someone entering your field today?</h2>
                 <textarea name="junior_advice" placeholder="What fundamental advice would you share for someone starting out now?..." rows="2" required></textarea>
                 <div class="nav-group"><button type="button" class="btn secondary" onclick="navigate(8)">Back</button><button type="button" class="btn" onclick="navigate(10)">Next</button></div>
             </div>
@@ -261,14 +263,14 @@
             <div class="step" id="s10">
                 <span class="meta">10 / 13</span>
                 <h2>How are you planning to stay relevant in the coming year?</h2>
-                <textarea name="relevancy_strategy" placeholder="Share your strategy for growth and any concerns you have about it..." rows="2" required></textarea>
+                <textarea name="remain_relevant_strategy" placeholder="Share your strategy for growth and any concerns you have about it..." rows="2" required></textarea>
                 <div class="nav-group"><button type="button" class="btn secondary" onclick="navigate(9)">Back</button><button type="button" class="btn" onclick="navigate(11)">Next</button></div>
             </div>
 
             <!-- Question 11 -->
             <div class="step" id="s11">
                 <span class="meta">11 / 13</span>
-                <h2>How confident are you that your current 'Hard Skills' will be relevant in 18 months?</h2>
+                <h2>Will your current expertise still be relevant in 18 months? How confident are you?</h2>
                 <select name="relevancy_confidence" required>
                     <option value="" disabled selected>Select level...</option>
                     <option>1 - Not confident at all</option><option>2</option><option>3</option><option>4</option><option>5 - Somewhat confident</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10 - Fully confident</option>
