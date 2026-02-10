@@ -191,19 +191,86 @@
                 <div class="nav-group"><button type="button" class="btn" onclick="navigate(2)">Next</button></div>
             </div>
 
-            <!-- Question 2 -->
-            <div class="step" id="s2">
-                <span class="meta">02 / 13</span>
-                <h2>How is your average week divided (rough estimate)?</h2>
-                <div class="time-grid">
-                    <div class="time-item"><label>Recurring meetings (Status meetings/Admin)</label><select name="percent_optics" required><option value="" disabled selected>%</option><option>10%</option><option>30%</option><option>50%</option><option>70%+</option></select></div>
-                    <div class="time-item"><label>Deep Craft (Actual execution)</label><select name="percent_craft" required><option value="" disabled selected>%</option><option>10%</option><option>30%</option><option>50%</option><option>70%+</option></select></div>
-                    <div class="time-item"><label>Strategic/Systemic Thinking</label><select name="percent_strategy" required><option value="" disabled selected>%</option><option>10%</option><option>30%</option><option>50%</option><option>70%+</option></select></div>
-                    <div class="time-item"><label>Collaborative Problem Solving</label><select name="percent_collab" required><option value="" disabled selected>%</option><option>10%</option><option>30%</option><option>50%</option><option>70%+</option></select></div>
-                </div>
-                <div class="tippytips">Just rough estimates, doesn't have to add up to a 100%!</div>
-                <div class="nav-group"><button type="button" class="btn secondary" onclick="navigate(1)">Back</button><button type="button" class="btn" onclick="navigate(3)">Next</button></div>
-            </div>
+         <!-- Question 2 -->
+<div class="step" id="s2">
+    <span class="meta">02 / 13</span>
+    <h2>How is your average week divided?</h2>
+    <div class="time-grid">
+        <div class="time-item">
+            <label>Recurring meetings (Status meetings/Admin)</label>
+            <select name="percent_optics" required>
+                <option value="" disabled selected>%</option>
+                <option>0%</option>
+                <option>10%</option>
+                <option>20%</option>
+                <option>30%</option>
+                <option>40%</option>
+                <option>50%</option>
+                <option>60%</option>
+                <option>70%</option>
+                <option>80%</option>
+                <option>90%</option>
+                <option>100%</option>
+            </select>
+        </div>
+        <div class="time-item">
+            <label>Deep Craft (Actual execution)</label>
+            <select name="percent_craft" required>
+                <option value="" disabled selected>%</option>
+                <option>0%</option>
+                <option>10%</option>
+                <option>20%</option>
+                <option>30%</option>
+                <option>40%</option>
+                <option>50%</option>
+                <option>60%</option>
+                <option>70%</option>
+                <option>80%</option>
+                <option>90%</option>
+                <option>100%</option>
+            </select>
+        </div>
+        <div class="time-item">
+            <label>Strategic/Systemic Thinking</label>
+            <select name="percent_strategy" required>
+                <option value="" disabled selected>%</option>
+                <option>0%</option>
+                <option>10%</option>
+                <option>20%</option>
+                <option>30%</option>
+                <option>40%</option>
+                <option>50%</option>
+                <option>60%</option>
+                <option>70%</option>
+                <option>80%</option>
+                <option>90%</option>
+                <option>100%</option>
+            </select>
+        </div>
+        <div class="time-item">
+            <label>Collaborative Problem Solving</label>
+            <select name="percent_collab" required>
+                <option value="" disabled selected>%</option>
+                <option>0%</option>
+                <option>10%</option>
+                <option>20%</option>
+                <option>30%</option>
+                <option>40%</option>
+                <option>50%</option>
+                <option>60%</option>
+                <option>70%</option>
+                <option>80%</option>
+                <option>90%</option>
+                <option>100%</option>
+            </select>
+        </div>
+    </div>
+    <div class="tippytips">Rough estimates. It's fine if it doesn't add to exactly 100%.</div>
+    <div class="nav-group">
+        <button type="button" class="btn secondary" onclick="navigate(1)">Back</button>
+        <button type="button" class="btn" onclick="navigate(3)">Next</button>
+    </div>
+</div>
 
             <!-- Question 3 -->
             <div class="step" id="s3">
