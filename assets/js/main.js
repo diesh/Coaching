@@ -379,3 +379,63 @@ document.addEventListener('DOMContentLoaded', function() {
     if (shareModal) shareModal.hidden = true;
   });
 });
+
+
+// ----------------------------------------------
+//  COACHING MODAL AUTO-POP BASED ON URL PARAM
+// ----------------------------------------------
+
+
+document.addEventListener('DOMContentLoaded', function() {
+  const urlParams = new URLSearchParams(window.location.search);
+
+  if (urlParams.has('portfolio')) {
+    // Jekyll injects the values from your MD file directly here
+    const altTitle = "{{ page.portfolio_hero_title }}";
+    const altTagline = "{{ page.portfolio_hero_tagline }}";
+
+    // We find the elements by their existing classes in home.html
+    const titleEl = document.querySelector('.hero-display');
+    const taglineEl = document.querySelector('.hero-tagline');
+
+    if (titleEl && altTitle) {
+      titleEl.innerText = altTitle;
+    }
+    
+    if (taglineEl && altTagline) {
+      // Use innerHTML in case you use <strong> tags in your MD tagline
+      taglineEl.innerHTML = altTagline;
+    }
+  }
+
+
+
+ if (urlParams.has('portfolio')) {
+    const container = document.querySelector('#banner .content');
+
+    if (container) {
+      const backLink = document.createElement('a');
+      backLink.href = "https://portfolio.diesh.ca"; 
+      backLink.className = "masthead_link-secondary fade-in-delayed";
+      
+      backLink.innerHTML = `
+        <span>Go back to portfolio</span>
+        <span class="arrow">
+          <svg width="12" height="12" viewBox="0 0 12 12">
+            <path d="M3 6h7M7 3l3 3-3 3" stroke-width="1.5" />
+          </svg>
+        </span>
+      `;
+      
+      container.appendChild(backLink);
+
+      // Trigger the fade-in after the primary button has landed
+      // 1500ms allows the main banner animation (~1s) to finish first
+      setTimeout(() => {
+        backLink.classList.add('is-visible');
+      }, 1500); 
+    }
+  }
+});
+
+

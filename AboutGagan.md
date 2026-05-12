@@ -46,7 +46,7 @@ main_class: alt
 
       <p>I’ve led strategy, research, and design projects across Canada, U.S., France, Mexico, and India. I’ve created UX, design and leadership courses, taught at Vancouver Film School, and delivered keynotes and talks around the world. I’ve spent years mentoring and managing growing teams. As VP of Experience Design at Thinkific, I scaled design and research during a period of rapid growth and helped lead the company to a $1B IPO valuation.</p>
 
-      <h2>What I Do Today</h2>
+      <h3>What I Do Today</h3>
       <p>Today, I coach tech professionals and leaders, facilitate strategy workshops, and help people navigate big decisions and moments of change. I specialise in helping people see their strengths clearly, and use them more intentionally.</p>
 
       <p>I live in Toronto, Canada 🇨🇦, and work with clients across North America and Europe.</p>
@@ -71,7 +71,7 @@ main_class: alt
 
       <p>My approach blends systems thinking, user-centered design, and strategic questioning. Whether you’re stepping into leadership, navigating a pivot, or trying to communicate with more impact, I’ll help you do it with clarity and purpose.</p>
 
-      <h2>My Coaching Style</h2>
+      <h3>My Coaching Style</h3>
 
       <div class="callout callout-left">
         <span class="fa fa-map"></span> 

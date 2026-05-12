@@ -13,4 +13,9 @@ about_paragraphs:
   - Today, I help leaders, high-performing professionals, and teams level up through executive coaching. I collaborate with them to tackle big challenges and help create meaningful impact in their work. 
 about_link_href: AboutGagan.html
 about_link_text: More about me
+
+# javascript swaps the og values with these alternatives if people come from ?portfolio
+
+portfolio_hero_title: "Coaching for Design & Product Leaders."
+portfolio_hero_tagline: "I help design and product leaders get hired, grow their influence, and align their teams to do their best work."
 ---

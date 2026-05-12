@@ -6,18 +6,11 @@ description: I help design + product professionals and teams unlock their full p
 
 blog_tagline: "Spicy musings about UX, design, tech, and the world we live in."
 
+# url: "https://diesh.ca"   # canonical site URL
+# baseurl: ""               # keep empty if site is served from root
 
 url: "https://diesh.ca"
 baseurl: ""
-image: /assets/images/Gagan_Diesh_hello.png
-seo_image: /assets/images/Gagan_Diesh_hello.png
-
-
-
-
-include:
-  - CNAME
-
 
 author:
 street_address: 
@@ -31,8 +24,6 @@ phone:
 tiles-source: pages # accepts "posts" or "pages"
 tiles-count: 6
 
-
-
 # social settings (key must match name of font awesome icon)
 # see https://fontawesome.com/icons?d=gallery&p=2&s=brands
 # Icons are not shown if value is empty.
@@ -41,7 +32,6 @@ socials:
  
   LinkedIn: http://linkedin.com/in/diesh
  
-
 # build settings
 markdown: kramdown
 
@@ -58,8 +48,10 @@ permalink: /:categories/:year/:month/:day/:title.html
 
 plugins:
   - jekyll-seo-tag
+  - jekyll-redirect-from
 
 theme: null
+
 
 
 

@@ -8,9 +8,12 @@ hide_from_tiles: true
 nav-color: "#8d82c4"
 is_special: true
 weight: 50
-permalink: /goodquestion.html
+permalink: /goodquestion/
+redirect_from:
+  - /goodquestion.html
 nav_active: goodquestion
 ---
+
 <!-- <style>
 
 a.post-title:link,
